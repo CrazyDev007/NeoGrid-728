@@ -69,6 +69,7 @@ namespace Managers
     {
         Lobby,
         Setting,
+        Gameplay,
     }
 
 

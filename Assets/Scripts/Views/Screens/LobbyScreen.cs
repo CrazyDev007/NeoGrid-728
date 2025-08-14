@@ -8,6 +8,8 @@ namespace Views.Screens
         public void OnClickBtnPlay()
         {
             Debug.Log(GameManager.Instance.gameMode.ToString());
+            SceneLoadManager.Instance.UnloadScene("Lobby");
+            SceneLoadManager.Instance.LoadSceneAdditive("Gameplay");
         }
 
         public void OnClickBtnSettings()

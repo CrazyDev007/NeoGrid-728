@@ -1,42 +1,72 @@
+using System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Managers
 {
-    public static GameManager Instance;
-    public GameMode gameMode;
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if (Instance != null && Instance == this)
+        public static GameManager Instance;
+        public GameMode gameMode;
+
+        private int _matchesCount;
+        private int _turnsCount;
+
+        public int MatchesCount
         {
-            Destroy(gameObject);
+            get => _matchesCount;
+            set
+            {
+                _matchesCount = value;
+                OnMatchesCountChanged?.Invoke(value);
+            }
         }
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-        //
-        InitializeGameManager();
-    }
+        public int TurnsCount
+        {
+            get => _turnsCount;
+            set
+            {
+                _turnsCount = value;
+                OnTurnsCountChanged?.Invoke(_turnsCount);
+            }
+        }
 
-    private void InitializeGameManager()
-    {
-        gameMode = SaveManager.Singleton.LoadGameMode();
-    }
+        public static event Action<int> OnMatchesCountChanged;
+        public static event Action<int> OnTurnsCountChanged;
 
-    public void SaveGameMode(GameMode gameModeToSave)
-    {
-        gameMode = gameModeToSave;
-        SaveManager.Singleton.SaveGameMode(gameMode);
-    }
+        private void Awake()
+        {
+            if (Instance != null && Instance == this)
+            {
+                Destroy(gameObject);
+            }
 
-    public void LoadGameMode()
-    {
-        gameMode = SaveManager.Singleton.LoadGameMode();
-        Debug.Log("Loaded Game Mode: " + gameMode);
-    }
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            //
+            InitializeGameManager();
+        }
 
-    private void QuitGame()
-    {
-        Application.Quit();
+        private void InitializeGameManager()
+        {
+            gameMode = SaveManager.Singleton.LoadGameMode();
+        }
+
+        public void SaveGameMode(GameMode gameModeToSave)
+        {
+            gameMode = gameModeToSave;
+            SaveManager.Singleton.SaveGameMode(gameMode);
+        }
+
+        public void LoadGameMode()
+        {
+            gameMode = SaveManager.Singleton.LoadGameMode();
+            Debug.Log("Loaded Game Mode: " + gameMode);
+        }
+
+        private void QuitGame()
+        {
+            Application.Quit();
+        }
     }
 }

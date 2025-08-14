@@ -68,12 +68,27 @@ namespace Managers
 
         private IEnumerator LoadSceneAdditiveAsync(string sceneName)
         {
+            loadingScreen.SetActive(true);
+            loadingSlider.value = 0;
+
             var operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            operation.allowSceneActivation = false;
+
             while (!operation.isDone)
             {
+                var progress = Mathf.Clamp01(operation.progress / 0.9f);
+                loadingSlider.value = progress;
+                Debug.Log($"Loading progress: {progress * 100}%");
+                if (operation.progress >= 0.9f)
+                {
+                    yield return new WaitForSeconds(1f);
+                    operation.allowSceneActivation = true;
+                }
+
                 yield return null;
             }
 
+            loadingScreen.SetActive(false);
             Debug.Log($"Scene '{sceneName}' loaded additively.");
         }
 
