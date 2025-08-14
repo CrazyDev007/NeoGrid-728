@@ -1,6 +1,7 @@
+using Managers;
 using UnityEngine;
 
-namespace Views
+namespace Views.Screens
 {
     public class LobbyScreen : UIScreen
     {
@@ -11,6 +12,7 @@ namespace Views
 
         public void OnClickBtnSettings()
         {
+            UIManager.Instance.ShowScreen(UIScreenType.Setting);
         }
     }
 }

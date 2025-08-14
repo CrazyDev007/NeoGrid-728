@@ -2,77 +2,81 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+namespace Managers
 {
-    public static UIManager Instance { get; private set; }
-    [SerializeField] private List<UIScreenMapping> screenMappings;
-
-    private readonly Dictionary<UIScreenType, UIScreen> _screens = new Dictionary<UIScreenType, UIScreen>();
-
-    private UIScreen _activeScreen;
-
-    private void Awake()
+    public class UIManager : MonoBehaviour
     {
-        if (Instance != null && Instance != this)
+        public static UIManager Instance { get; private set; }
+        [SerializeField] private List<UIScreenMapping> screenMappings;
+
+        private readonly Dictionary<UIScreenType, UIScreen> _screens = new Dictionary<UIScreenType, UIScreen>();
+
+        private UIScreen _activeScreen;
+
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+
+            foreach (var mapping in screenMappings)
+            {
+                if (mapping.screen != null && !_screens.ContainsKey(mapping.type))
+                {
+                    _screens.Add(mapping.type, mapping.screen);
+                    if (mapping.isDefault)
+                    {
+                        ShowScreen(mapping.type);
+                    }
+                    else
+                    {
+                        HideScreen(mapping.type);
+                    }
+                }
+            }
         }
 
-        Instance = this;
-
-        foreach (var mapping in screenMappings)
+        public void ShowScreen(UIScreenType screenType)
         {
-            if (mapping.screen != null && !_screens.ContainsKey(mapping.type))
+            if (_screens.TryGetValue(screenType, out var screen))
             {
-                _screens.Add(mapping.type, mapping.screen);
-                if (mapping.isDefault)
-                {
-                    ShowScreen(mapping.type);
-                }
-                else
-                {
-                    HideScreen(mapping.type);
-                }
+                screen.Show();
+            }
+            else
+            {
+                Debug.LogError($"Screen of type {screenType} not found.");
+            }
+        }
+
+        public void HideScreen(UIScreenType screenType)
+        {
+            if (_screens.TryGetValue(screenType, out var screen))
+            {
+                screen.Hide();
+            }
+            else
+            {
+                Debug.LogError($"Screen of type {screenType} not found.");
             }
         }
     }
 
-    public void ShowScreen(UIScreenType screenType)
+    public enum UIScreenType
     {
-        if (_screens.TryGetValue(screenType, out var screen))
-        {
-            screen.Show();
-        }
-        else
-        {
-            Debug.LogError($"Screen of type {screenType} not found.");
-        }
+        Lobby,
+        Setting,
     }
 
-    public void HideScreen(UIScreenType screenType)
+
+    [Serializable]
+    public struct UIScreenMapping
     {
-        if (_screens.TryGetValue(screenType, out var screen))
-        {
-            screen.Hide();
-        }
-        else
-        {
-            Debug.LogError($"Screen of type {screenType} not found.");
-        }
+        public UIScreenType type;
+        public UIScreen screen;
+        public bool isDefault;
     }
-}
-
-public enum UIScreenType
-{
-    Lobby,
-}
-
-
-[Serializable]
-public struct UIScreenMapping
-{
-    public UIScreenType type;
-    public UIScreen screen;
-    public bool isDefault;
 }
