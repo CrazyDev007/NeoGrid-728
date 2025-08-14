@@ -13,6 +13,7 @@ namespace Views.Screens
         public void OnClickBtnSettings()
         {
             UIManager.Instance.ShowScreen(UIScreenType.Setting);
+            Hide();
         }
     }
 }
