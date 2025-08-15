@@ -653,7 +653,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardViewPrefab: {fileID: 3855526920829011264, guid: 02ef4885e63872f4c9d5f4eaa4b6f843, type: 3}
   rowCount: 2
-  columnCount: 2
+  columnCount: 6
+  spaceBetweenCards: 2.5
 --- !u!4 &2045697572
 Transform:
   m_ObjectHideFlags: 0
