@@ -11,32 +11,22 @@ namespace Components
         private void Awake()
         {
             _mainCamera = Camera.main;
-
-            // Create an input action for the left mouse button.
             _clickAction = new InputAction(binding: "<Mouse>/leftButton");
-
-            // Define what happens when the action is performed.
-            _clickAction.performed += ctx =>
+            _clickAction.performed += delegate
             {
-                Vector2 mousePosition = Mouse.current.position.ReadValue();
-                Ray ray = _mainCamera.ScreenPointToRay(mousePosition);
-                RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+                var mousePosition = Mouse.current.position.ReadValue();
+                var ray = _mainCamera!.ScreenPointToRay(mousePosition);
+                var hit = Physics2D.GetRayIntersection(ray);
 
                 if (hit.collider != null && hit.collider.gameObject == gameObject)
                 {
-                    SendMessage("OnMouseClicked2D", true);
-                }
-                else
-                {
-                    SendMessage("OnMouseClicked2D", false);
+                    SendMessage("OnMouseClicked2D");
                 }
             };
-
-            _clickAction.Enable(); // Enable the action to start listening for input.
+            _clickAction.Enable();
         }
 
-        // Remember to disable the action when the object is destroyed.
-        void OnDestroy()
+        private void OnDestroy()
         {
             _clickAction.Disable();
         }

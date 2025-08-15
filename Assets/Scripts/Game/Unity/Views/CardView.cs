@@ -1,3 +1,4 @@
+using Game.Core.Entities;
 using Game.Presentation.MVP;
 using TMPro;
 using UnityEngine;
@@ -14,10 +15,7 @@ namespace Game.Unity.Views
             _cardPresenter = new CardPresenter(this);
         }
 
-        private void OnMouseClicked2D(bool self)
-        {
-            _cardPresenter.OnCardClicked(self);
-        }
+        public void OnMouseClicked2D() => _cardPresenter.OnCardClicked();
 
         public void OpenCard()
         {
@@ -32,6 +30,30 @@ namespace Game.Unity.Views
         public void LockCard()
         {
             cardText.color = Color.red;
+        }
+
+        public void UpdateCardID(int cardID)
+        {
+            cardText.text = cardID.ToString();
+        }
+
+        public CardEntity GetCardEntity()
+        {
+            return _cardPresenter.GetCardEntity();
+        }
+
+        public void ActionOpenCard()
+        {
+        }
+
+        public void ActionCloseCard()
+        {
+            _cardPresenter.HandleActionCloseCard();
+        }
+
+        public void ActionLockCard()
+        {
+            _cardPresenter.HandleActionLockCard();
         }
     }
 }

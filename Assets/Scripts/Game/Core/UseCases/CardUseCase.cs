@@ -4,14 +4,19 @@ namespace Game.Core.UseCases
 {
     public class CardUseCase
     {
-        public int GetCardID(CardEntity cardEntity)
+        public static int GetCardID(CardEntity cardEntity)
         {
             return cardEntity.CardId;
         }
 
-        public void ChangeCardState(CardEntity cardEntity, CardState newState)
+        public static void ChangeCardState(CardEntity cardEntity, CardState newState)
         {
             cardEntity.CardState = newState;
+        }
+
+        public static void SetCardID(CardEntity cardEntity, int newID)
+        {
+            cardEntity.CardId = newID;
         }
     }
 }
