@@ -37,6 +37,7 @@ namespace Test
                 cardViewA.ActionCloseCard();
                 cardViewB.ActionCloseCard();
             }
+            SelectedCardView = null;
         }
     }
 }

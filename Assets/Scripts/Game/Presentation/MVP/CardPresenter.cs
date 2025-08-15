@@ -22,6 +22,11 @@ namespace Game.Presentation.MVP
 
         public void OnCardClicked()
         {
+            if (_cardEntity.CardState == CardState.Locked)
+            {
+                return;
+            }
+
             CardState cardNewState;
 
             if (TestGameManager.Instance.SelectedCardView == null)
