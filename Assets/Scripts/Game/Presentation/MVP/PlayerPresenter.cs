@@ -1,32 +1,31 @@
 using Game.Core.Entities;
 using Game.Core.UseCases;
-using Game.Core.Views;
 
-namespace Game.Core.Presenters
+namespace Game.Presentation.MVP
 {
     public class PlayerPresenter
     {
-        private readonly PlayerView _playerView;
+        private readonly IPlayerView _playerView;
         private readonly PlayerEntity _playerEntity;
-        private readonly TakeDamageUseCase _takeDamageUseCase;
+        private readonly PlayerUseCase _playerUseCase;
 
-        public PlayerPresenter(PlayerView playerView)
+        public PlayerPresenter(IPlayerView playerView)
         {
             _playerView = playerView;
             _playerEntity = new PlayerEntity(10);
-            _takeDamageUseCase = new TakeDamageUseCase();
+            _playerUseCase = new PlayerUseCase();
             UpdatePlayerView();
         }
 
         public void HandleDamageButtonPressed()
         {
-            TakeDamageUseCase.Execute(_playerEntity, 1);
+            _playerUseCase.ExecuteTakeDamage(_playerEntity, 1);
             UpdatePlayerView();
         }
 
         private void UpdatePlayerView()
         {
-            _playerView.UpdateHealthText(_playerEntity.CurrentHealth, _playerEntity.MaxHealth);
+            _playerView.DisplayHealth(_playerEntity.CurrentHealth, _playerEntity.MaxHealth);
         }
     }
 }

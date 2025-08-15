@@ -1,3 +1,5 @@
+using System;
+
 namespace Game.Core.Entities
 {
     public class PlayerEntity
@@ -13,8 +15,7 @@ namespace Game.Core.Entities
 
         public void TakeDamage(int damage)
         {
-            CurrentHealth -= damage;
-            if (CurrentHealth <= 0) CurrentHealth = 0;
+            CurrentHealth = Math.Max(0, CurrentHealth - damage);
         }
     }
 }

@@ -1,10 +1,10 @@
-using Game.Core.Presenters;
+using Game.Presentation.MVP;
 using TMPro;
 using UnityEngine;
 
-namespace Game.Core.Views
+namespace Game.Unity.Views
 {
-    public class PlayerView : MonoBehaviour
+    public class PlayerView : MonoBehaviour, IPlayerView
     {
         public TextMeshProUGUI healthText;
         private PlayerPresenter _playerPresenter;
@@ -19,7 +19,7 @@ namespace Game.Core.Views
             _playerPresenter.HandleDamageButtonPressed();
         }
 
-        public void UpdateHealthText(int currentHealth, int maxHealth)
+        public void DisplayHealth(int currentHealth, int maxHealth)
         {
             healthText.text = currentHealth + "/" + maxHealth;
         }
