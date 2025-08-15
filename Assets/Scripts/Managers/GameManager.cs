@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Game.Unity.Views;
 using UnityEngine;
 
 namespace Managers
@@ -10,6 +12,8 @@ namespace Managers
 
         private int _matchesCount;
         private int _turnsCount;
+
+        public List<CardView> CardViews { get; set; } = new List<CardView>();
 
         public int MatchesCount
         {

@@ -32,7 +32,7 @@ namespace Game.Unity.Views
             cardText.color = Color.red;
         }
 
-        public void UpdateCardID(int cardID)
+        public void UpdateCardIDText(int cardID)
         {
             cardText.text = cardID.ToString();
         }
@@ -54,6 +54,11 @@ namespace Game.Unity.Views
         public void ActionLockCard()
         {
             _cardPresenter.HandleActionLockCard();
+        }
+
+        public void UpdateCartID(int cardID)
+        {
+            _cardPresenter.HandleActionUpdateCardID(cardID);
         }
     }
 }

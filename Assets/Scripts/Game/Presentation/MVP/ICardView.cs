@@ -7,12 +7,13 @@ namespace Game.Presentation.MVP
         void OpenCard();
         void CloseCard();
         void LockCard();
-        void UpdateCardID(int cardID);
+        void UpdateCardIDText(int cardID);
 
         CardEntity GetCardEntity();
-        
+
         void ActionOpenCard();
         void ActionCloseCard();
         void ActionLockCard();
+        void UpdateCartID(int cardID);
     }
 }

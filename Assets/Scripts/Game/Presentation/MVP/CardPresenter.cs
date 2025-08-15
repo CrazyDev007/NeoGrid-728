@@ -1,7 +1,6 @@
 using Game.Core.Entities;
 using Game.Core.UseCases;
 using Test;
-using UnityEngine;
 
 namespace Game.Presentation.MVP
 {
@@ -14,7 +13,7 @@ namespace Game.Presentation.MVP
         {
             _cardView = cardView;
             _cardEntity = new CardEntity();
-            CardUseCase.SetCardID(_cardEntity, Random.Range(0, 2));
+            //CardUseCase.SetCardID(_cardEntity, Random.Range(0, 2));
             //
             UpdateCardStateView();
             UpdateCardIDView();
@@ -75,7 +74,7 @@ namespace Game.Presentation.MVP
 
         private void UpdateCardIDView()
         {
-            _cardView.UpdateCardID(CardUseCase.GetCardID(_cardEntity));
+            _cardView.UpdateCardIDText(CardUseCase.GetCardID(_cardEntity));
         }
 
         public void HandleActionOpenCard()
@@ -92,6 +91,12 @@ namespace Game.Presentation.MVP
         {
             CardUseCase.ChangeCardState(_cardEntity, CardState.Locked);
             UpdateCardStateView();
+        }
+
+        public void HandleActionUpdateCardID(int cardID)
+        {
+            CardUseCase.SetCardID(_cardEntity, cardID);
+            UpdateCardIDView();
         }
     }
 }
