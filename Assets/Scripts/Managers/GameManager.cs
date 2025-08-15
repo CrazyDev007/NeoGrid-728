@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Game.Core.UseCases;
+using Game.Presentation.MVP;
 using Game.Unity.Views;
 using UnityEngine;
 
@@ -14,6 +17,8 @@ namespace Managers
         private int _turnsCount;
 
         public List<CardView> CardViews { get; set; } = new List<CardView>();
+
+        public ICardView SelectedCardView;
 
         public int MatchesCount
         {
@@ -71,6 +76,26 @@ namespace Managers
         private void QuitGame()
         {
             Application.Quit();
+        }
+
+        public async Task CompareCard(ICardView cardViewA, ICardView cardViewB)
+        {
+            await Task.Delay(1000);
+
+            if (CardUseCase.GetCardID(cardViewA.GetCardEntity()) == CardUseCase.GetCardID(cardViewB.GetCardEntity()))
+            {
+                Debug.Log("Same Cards");
+                cardViewA.ActionLockCard();
+                cardViewB.ActionLockCard();
+            }
+            else
+            {
+                Debug.Log("Different Cards");
+                cardViewA.ActionCloseCard();
+                cardViewB.ActionCloseCard();
+            }
+
+            SelectedCardView = null;
         }
     }
 }

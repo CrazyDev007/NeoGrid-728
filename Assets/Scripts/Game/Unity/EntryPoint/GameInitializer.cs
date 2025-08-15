@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Game.Unity.Views;
+using Managers;
 using UnityEngine;
 
 namespace Game.Unity.EntryPoint
@@ -57,6 +58,8 @@ namespace Game.Unity.EntryPoint
                 var randomIndex = Random.Range(0, i + 1);
                 (cardViews[i], cardViews[randomIndex]) = (cardViews[randomIndex], cardViews[i]);
             }
+
+            GameManager.Instance.CardViews.AddRange(cardViews);
         }
 
         private void Awake_1()

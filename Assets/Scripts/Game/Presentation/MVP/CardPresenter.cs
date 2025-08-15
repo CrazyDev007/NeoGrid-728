@@ -1,6 +1,6 @@
 using Game.Core.Entities;
 using Game.Core.UseCases;
-using Test;
+using Managers;
 
 namespace Game.Presentation.MVP
 {
@@ -28,20 +28,20 @@ namespace Game.Presentation.MVP
 
             CardState cardNewState;
 
-            if (TestGameManager.Instance.SelectedCardView == null)
+            if (GameManager.Instance.SelectedCardView == null)
             {
-                TestGameManager.Instance.SelectedCardView = _cardView;
+                GameManager.Instance.SelectedCardView = _cardView;
                 cardNewState = CardState.Opened;
             }
-            else if (TestGameManager.Instance.SelectedCardView == _cardView)
+            else if (GameManager.Instance.SelectedCardView == _cardView)
             {
-                TestGameManager.Instance.SelectedCardView = null;
+                GameManager.Instance.SelectedCardView = null;
                 cardNewState = CardState.Closed;
             }
             else
             {
                 cardNewState = CardState.Opened;
-                _ = TestGameManager.Instance.CompareCard(TestGameManager.Instance.SelectedCardView, _cardView);
+                _ = GameManager.Instance.CompareCard(GameManager.Instance.SelectedCardView, _cardView);
             }
 
             CardUseCase.ChangeCardState(_cardEntity, cardNewState);
