@@ -70,6 +70,7 @@ namespace Managers
         Lobby,
         Setting,
         Gameplay,
+        GameEnd,
     }
 
 

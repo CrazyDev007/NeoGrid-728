@@ -59,7 +59,7 @@ namespace Game.Unity.EntryPoint
                 (cardViews[i], cardViews[randomIndex]) = (cardViews[randomIndex], cardViews[i]);
             }
 
-            GameManager.Instance.CardViews.AddRange(cardViews);
+            GameManager.Instance.AddCardViews(cardViews);
         }
 
         private void Awake_1()
