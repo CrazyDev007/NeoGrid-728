@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Game.Core.UseCases;
-using Game.Presentation.MVP;
-using Game.Unity.Views;
+using Game.Application.UseCases;
+using Game.Presentation.Views;
 using UnityEngine;
 
 namespace Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviour, IGameEndListener
     {
         public static GameManager Instance;
         public GameMode gameMode;
@@ -78,40 +76,21 @@ namespace Managers
         public void LoadGameMode()
         {
             gameMode = SaveManager.Singleton.LoadGameMode();
-            Debug.Log("Loaded Game Mode: " + gameMode);
+            //Debug.Log("Loaded Game Mode: " + gameMode);
         }
 
         private void QuitGame()
         {
-            Application.Quit();
+            UnityEngine.Application.Quit();
         }
 
-        public async Task CompareCard(ICardView cardViewA, ICardView cardViewB)
-        {
-            await Task.Delay(1000);
-
-            if (CardUseCase.GetCardID(cardViewA.GetCardEntity()) == CardUseCase.GetCardID(cardViewB.GetCardEntity()))
-            {
-                //Debug.Log("Same Cards");
-                cardViewA.ActionLockCard();
-                cardViewB.ActionLockCard();
-                MatchesCount += 1;
-                if (MatchesCount == PairsCount)
+        /*
+         * if (MatchesCount == PairsCount)
                 {
                     Debug.Log("Same Pairs");
                     EventOnGameEnded?.Invoke();
                 }
-            }
-            else
-            {
-                //Debug.Log("Different Cards");
-                cardViewA.ActionCloseCard();
-                cardViewB.ActionCloseCard();
-            }
-
-            TurnsCount += 1;
-            SelectedCardView = null;
-        }
+         */
 
         public void ResetGame()
         {
@@ -120,6 +99,11 @@ namespace Managers
             SelectedCardView = null;
             PairsCount = 0;
             CardViews.Clear();
+        }
+
+        public void OnGameEnded()
+        {
+            EventOnGameEnded?.Invoke();
         }
     }
 }

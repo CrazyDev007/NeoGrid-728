@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
-using Game.Core.UseCases;
-using Game.Presentation.MVP;
+using Game.Application.UseCases;
+using Game.Presentation;
+using Game.Presentation.Views;
 using UnityEngine;
 
 namespace Test
@@ -21,7 +22,7 @@ namespace Test
             Instance = this;
         }
 
-        public async Task CompareCard(ICardView cardViewA, ICardView cardViewB)
+        /*public async Task CompareCard(ICardView cardViewA, ICardView cardViewB)
         {
             await Task.Delay(1000);
 
@@ -38,6 +39,6 @@ namespace Test
                 cardViewB.ActionCloseCard();
             }
             SelectedCardView = null;
-        }
+        }*/
     }
 }

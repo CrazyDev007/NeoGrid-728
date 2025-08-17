@@ -1,3 +1,4 @@
+using Game.Bootstrap;
 using Managers;
 using UnityEngine;
 
@@ -13,12 +14,12 @@ namespace Views.Screens
 
         private void OnEnable()
         {
-            GameManager.EventOnGameEnded += EventOnGameEnded;
+            GameInitializer.EventOnGameEnded += EventOnGameEnded;
         }
 
         private void OnDisable()
         {
-            GameManager.EventOnGameEnded -= EventOnGameEnded;
+            GameInitializer.EventOnGameEnded -= EventOnGameEnded;
         }
     }
 }
