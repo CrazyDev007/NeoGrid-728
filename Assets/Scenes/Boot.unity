@@ -988,7 +988,7 @@ GameObject:
   - component: {fileID: 1930122433}
   - component: {fileID: 1930122432}
   m_Layer: 0
-  m_Name: Scene Load Manager
+  m_Name: Loading Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1007,21 +1007,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultScene: Lobby
-  OnSceneLoaded:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   loadingScreen: {fileID: 1373111485}
   loadingSlider: {fileID: 1284424273}
 --- !u!4 &1930122433

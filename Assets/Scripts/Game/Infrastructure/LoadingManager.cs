@@ -1,30 +1,31 @@
 using System.Collections;
+using Game.Presentation.Presenters;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.Infrastructure
 {
-    public class SceneLoadManager : MonoBehaviour
+    public class LoadingManager : MonoBehaviour
     {
         public string defaultScene;
-
-        public UnityEvent OnSceneLoaded;
-        public static SceneLoadManager Instance { get; private set; }
+        public static LoadingManager Instance;
 
         [SerializeField] private GameObject loadingScreen;
         [SerializeField] private Slider loadingSlider;
+
+        private LoadingPresenter _loadingPresenter;
 
         private void Awake()
         {
             if (Instance != null && Instance == this)
             {
                 Destroy(gameObject);
+                return;
             }
 
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             LoadSceneAdditive(defaultScene);
         }
 
@@ -39,17 +40,17 @@ namespace Game.Infrastructure
             loadingSlider.value = 0;
 
             var operation = SceneManager.LoadSceneAsync(sceneName);
-
-            operation.allowSceneActivation = false;
+            operation!.allowSceneActivation = false;
 
             while (!operation.isDone)
             {
                 var progress = Mathf.Clamp01(operation.progress / 0.9f);
-                loadingSlider.value = progress;
-                Debug.Log($"Loading progress: {progress * 100}%");
+                _loadingPresenter.UpdateProgress(progress);
+                loadingSlider.value = _loadingPresenter.GetProgress();
+                //
                 if (operation.progress >= 0.9f)
                 {
-                    yield return new WaitForSeconds(1f);
+                    _loadingPresenter.FinishLoading();
                     operation.allowSceneActivation = true;
                 }
 
@@ -72,16 +73,17 @@ namespace Game.Infrastructure
             loadingSlider.value = 0;
 
             var operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            operation.allowSceneActivation = false;
+            operation!.allowSceneActivation = false;
 
             while (!operation.isDone)
             {
                 var progress = Mathf.Clamp01(operation.progress / 0.9f);
-                loadingSlider.value = progress;
-                Debug.Log($"Loading progress: {progress * 100}%");
+                _loadingPresenter.UpdateProgress(progress);
+                loadingSlider.value = _loadingPresenter.GetProgress();
+                //
                 if (operation.progress >= 0.9f)
                 {
-                    yield return new WaitForSeconds(1f);
+                    _loadingPresenter.FinishLoading();
                     operation.allowSceneActivation = true;
                 }
 
@@ -100,7 +102,7 @@ namespace Game.Infrastructure
         private IEnumerator UnloadSceneAsync(string sceneName)
         {
             var operation = SceneManager.UnloadSceneAsync(sceneName);
-            while (!operation.isDone)
+            while (!operation!.isDone)
             {
                 yield return null;
             }

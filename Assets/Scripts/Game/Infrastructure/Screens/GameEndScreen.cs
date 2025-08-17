@@ -5,8 +5,8 @@ namespace Game.Infrastructure.Screens
         public void OnClickedNextButton()
         {
             //GameManager.Instance.ResetGame();
-            SceneLoadManager.Instance.UnloadScene("Gameplay");
-            SceneLoadManager.Instance.LoadSceneAdditive("Gameplay");
+            LoadingManager.Instance.UnloadScene("Gameplay");
+            LoadingManager.Instance.LoadSceneAdditive("Gameplay");
         }
     }
 }

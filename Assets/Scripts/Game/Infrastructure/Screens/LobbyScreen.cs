@@ -5,8 +5,8 @@ namespace Game.Infrastructure.Screens
         public void OnClickBtnPlay()
         {
             //Debug.Log(GameManager.Instance.gameMode.ToString());
-            SceneLoadManager.Instance.UnloadScene("Lobby");
-            SceneLoadManager.Instance.LoadSceneAdditive("Gameplay");
+            LoadingManager.Instance.UnloadScene("Lobby");
+            LoadingManager.Instance.LoadSceneAdditive("Gameplay");
         }
 
         public void OnClickBtnSettings()
