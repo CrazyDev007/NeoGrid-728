@@ -1,8 +1,6 @@
-using Game.Bootstrap;
-using Managers;
 using UnityEngine;
 
-namespace Views
+namespace Game.Infrastructure
 {
     public class GameplayStatsView : MonoBehaviour
     {
@@ -17,8 +15,8 @@ namespace Views
 
         private void OnEnable()
         {
-            GameManager.OnMatchesCountChanged += OnMatchesCountChanged;
-            GameManager.OnTurnsCountChanged += OnTurnsCountChanged;
+            //GameManager.OnMatchesCountChanged += OnMatchesCountChanged;
+            //GameManager.OnTurnsCountChanged += OnTurnsCountChanged;
         }
 
         private void OnTurnsCountChanged(int turnsCount)
@@ -33,8 +31,8 @@ namespace Views
 
         private void OnDisable()
         {
-            GameManager.OnMatchesCountChanged -= OnMatchesCountChanged;
-            GameManager.OnTurnsCountChanged -= OnTurnsCountChanged;
+            //GameManager.OnMatchesCountChanged -= OnMatchesCountChanged;
+            //GameManager.OnTurnsCountChanged -= OnTurnsCountChanged;
         }
     }
 }

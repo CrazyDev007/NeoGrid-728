@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Managers
+namespace Game.Infrastructure
 {
     public class SceneLoadManager : MonoBehaviour
     {

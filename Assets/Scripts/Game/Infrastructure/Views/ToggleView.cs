@@ -1,10 +1,12 @@
 using System;
+using Game.Presentation;
+using Game.Presentation.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Views
+namespace Game.Infrastructure
 {
-    public class ToggleView : MonoBehaviour
+    public class ToggleView : MonoBehaviour, IToggleView
     {
         [SerializeField] private GameMode mode;
         private Toggle _toggle;

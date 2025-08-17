@@ -1,8 +1,7 @@
-using Game.Bootstrap;
-using Managers;
 using UnityEngine;
+using Views;
 
-namespace Views
+namespace Game.Infrastructure
 {
     public class GameModeView : MonoBehaviour
     {

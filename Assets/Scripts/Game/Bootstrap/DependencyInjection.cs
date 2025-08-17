@@ -1,16 +1,8 @@
 using UnityEngine;
 
-public class DependencyInjection : MonoBehaviour
+namespace Game.Bootstrap
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class DependencyInjection : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

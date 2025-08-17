@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Components
+namespace Game.Infrastructure.Components
 {
     public class ClickDetector2D : MonoBehaviour
     {

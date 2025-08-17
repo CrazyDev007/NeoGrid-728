@@ -1,14 +1,14 @@
+using Game.Presentation.Views;
 using Models;
-using Views;
 
-namespace ViewModels
+namespace Game.Presentation
 {
     public class ToggleViewModel
     {
         private ToggleModel _toggleModel;
-        private ToggleView _toggleView;
+        private IToggleView _toggleView;
 
-        public ToggleViewModel(ToggleModel toggleModel, ToggleView toggleView)
+        public ToggleViewModel(ToggleModel toggleModel, IToggleView toggleView)
         {
             _toggleModel = toggleModel;
             _toggleView = toggleView;

@@ -1,8 +1,6 @@
-using Game.Bootstrap;
-using Managers;
 using UnityEngine;
 
-namespace Views.Screens
+namespace Game.Infrastructure.Screens
 {
     public class GameplayScreen : UIScreen
     {
@@ -14,12 +12,12 @@ namespace Views.Screens
 
         private void OnEnable()
         {
-            GameManager.EventOnGameEnded += EventOnGameEnded;
+            //GameManager.EventOnGameEnded += EventOnGameEnded;
         }
 
         private void OnDisable()
         {
-            GameManager.EventOnGameEnded -= EventOnGameEnded;
+            //GameManager.EventOnGameEnded -= EventOnGameEnded;
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Models
+namespace Game.Infrastructure
 {
     public class LobbyModel
     {

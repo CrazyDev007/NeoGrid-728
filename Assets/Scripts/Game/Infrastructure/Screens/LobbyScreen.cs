@@ -1,8 +1,4 @@
-using Game.Bootstrap;
-using Managers;
-using UnityEngine;
-
-namespace Views.Screens
+namespace Game.Infrastructure.Screens
 {
     public class LobbyScreen : UIScreen
     {

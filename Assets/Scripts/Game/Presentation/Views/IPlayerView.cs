@@ -1,4 +1,4 @@
-namespace Game.Presentation
+namespace Game.Presentation.Views
 {
     public interface IPlayerView
     {

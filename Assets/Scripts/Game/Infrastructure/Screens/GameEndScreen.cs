@@ -1,7 +1,4 @@
-using Game.Bootstrap;
-using Managers;
-
-namespace Views.Screens
+namespace Game.Infrastructure.Screens
 {
     public class GameEndScreen : UIScreen
     {

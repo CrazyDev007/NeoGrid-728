@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Views
+namespace Game.Infrastructure
 {
     public class GameplayStatItemView : MonoBehaviour
     {
