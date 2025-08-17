@@ -2,16 +2,20 @@ using Game.Domain.Entities;
 
 namespace Game.Application.UseCases
 {
-    public class LoadSceneUseCase
+    public class LoadSceneUseCase : ILoadSceneUseCase
     {
-        private readonly LoadingState _loadingState;
+        private readonly ILoadingState _loadingState;
 
-        public LoadSceneUseCase(LoadingState loadingState)
+        public LoadSceneUseCase()
+        {
+        }
+
+        public LoadSceneUseCase(ILoadingState loadingState)
         {
             _loadingState = loadingState;
         }
 
-        public LoadingState Execute(string sceneName)
+        public ILoadingState Execute(string sceneName)
         {
             _loadingState.StartLoading();
             return _loadingState;

@@ -1,6 +1,6 @@
 namespace Game.Domain.Entities
 {
-    public class LoadingState
+    public class LoadingState : ILoadingState
     {
         public bool IsLoading { get; set; }
         public float Progress { get; set; }
