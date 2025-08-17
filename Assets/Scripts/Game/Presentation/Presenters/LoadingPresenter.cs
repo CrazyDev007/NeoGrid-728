@@ -8,10 +8,6 @@ namespace Game.Presentation.Presenters
         private ILoadingView _loadingView;
         private ILoadSceneUseCase _loadSceneUseCase;
 
-        public LoadingPresenter()
-        {
-        }
-
         public void Initialize(ILoadingView loadingView) => _loadingView = loadingView;
         public bool ShouldShow() => _loadSceneUseCase.IsLoading();
         public float GetProgress() => _loadSceneUseCase.GetProgress();
