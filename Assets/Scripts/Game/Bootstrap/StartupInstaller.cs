@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Game.Bootstrap
 {
     [DefaultExecutionOrder(-8000)]
-    public class EntryPoint : MonoInstaller
+    public class StartupInstaller : MonoInstaller
     {
         protected override void InstallBindings()
         {

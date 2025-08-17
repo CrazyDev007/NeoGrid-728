@@ -1,12 +1,13 @@
 using System.Collections;
 using Game.Presentation.Presenters;
+using Game.Presentation.Views;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.Infrastructure
 {
-    public class LoadingManager : MonoBehaviour
+    public class LoadingManager : MonoBehaviour, ILoadingView
     {
         public string defaultScene;
         public static LoadingManager Instance;
@@ -30,11 +31,18 @@ namespace Game.Infrastructure
 
         private void Start()
         {
+            _loadingPresenter.Initialize(this);
             LoadSceneAdditive(defaultScene);
+        }
+
+        public string GetTextMessageView()
+        {
+            return "Test Message From View!";
         }
 
         public void LoadSceneAdditive(string sceneName)
         {
+            //Debug.Log(">>>>> Loading scene " + _loadingPresenter.GetTestMessage());
             StartCoroutine(LoadSceneAdditiveAsync(sceneName));
         }
 

@@ -988,7 +988,7 @@ GameObject:
   - component: {fileID: 1893110139}
   - component: {fileID: 1893110140}
   m_Layer: 0
-  m_Name: Enrty Point
+  m_Name: Startup Installer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
