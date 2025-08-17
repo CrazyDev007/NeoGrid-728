@@ -14,12 +14,12 @@ namespace Views.Screens
 
         private void OnEnable()
         {
-            GameInitializer.EventOnGameEnded += EventOnGameEnded;
+            GameManager.EventOnGameEnded += EventOnGameEnded;
         }
 
         private void OnDisable()
         {
-            GameInitializer.EventOnGameEnded -= EventOnGameEnded;
+            GameManager.EventOnGameEnded -= EventOnGameEnded;
         }
     }
 }

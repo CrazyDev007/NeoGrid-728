@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Game.Application.UseCases;
 using Game.Domain.Entities;
@@ -9,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Game.Bootstrap
 {
-    public class GameInitializer : MonoBehaviour, IGameEndListener
+    public class GameInitializer : MonoBehaviour
     {
         [SerializeField] private CardView cardViewPrefab;
 
@@ -18,12 +17,12 @@ namespace Game.Bootstrap
 
         [Range(1, 4)] [SerializeField] private float spaceBetweenCards;
 
-        public static event Action EventOnGameEnded;
+        [SerializeField] private GameManager gameManager;
 
         private void Awake()
         {
             var cardViews = new List<CardView>();
-            var cardMatchUseCase = new CardMatchUseCase(this);
+            var cardMatchUseCase = new CardMatchUseCase(gameManager, gameManager, gameManager, gameManager);
             // Card Creation Logic
             var ratio = spaceBetweenCards / 2;
             var startX = -((columnCount - 1) * ratio);
@@ -47,20 +46,28 @@ namespace Game.Bootstrap
                 }
             }
 
-            // Initialize Cards
+            // Initialize Card Symbol
+            var cardSymbols = new int[cardViews.Count];
             var halfLength = cardViews.Count / 2;
             for (var i = 0; i < halfLength; i++)
             {
-                cardViews[i].UpdateCartID(i);
-                cardViews[i + halfLength].UpdateCartID(i);
+                cardSymbols[i] = i;
+                cardSymbols[i + halfLength] = i;
             }
 
-            // Shuffle Cards
-            for (var i = cardViews.Count - 1; i > 0; i--)
+            // Shuffle Symbols
+            for (var i = 0; i < cardSymbols.Length; i++)
             {
-                var randomIndex = Random.Range(0, i + 1);
-                (cardViews[i], cardViews[randomIndex]) = (cardViews[randomIndex], cardViews[i]);
+                var randomIndex = Random.Range(0, cardSymbols.Length);
+                (cardSymbols[i], cardSymbols[randomIndex]) = (cardSymbols[randomIndex], cardSymbols[i]);
             }
+
+            // Initialize Cards
+            for (var i = 0; i < cardSymbols.Length; i++)
+            {
+                cardViews[i].UpdateCartID(cardSymbols[i]);
+            }
+
 
             //GameManager.Instance.AddCardViews(cardViews);
             // Post Initialize
@@ -89,7 +96,7 @@ namespace Game.Bootstrap
                     Quaternion.identity);
             }
         }
-        
+
         public void ResetGame()
         {
             /*MatchesCount = 0;
@@ -97,12 +104,6 @@ namespace Game.Bootstrap
             SelectedCardView = null;
             PairsCount = 0;
             CardViews.Clear();*/
-        }
-
-        public void OnGameEnded()
-        {
-            Debug.Log("Game Ended");
-            EventOnGameEnded?.Invoke();
         }
     }
 }

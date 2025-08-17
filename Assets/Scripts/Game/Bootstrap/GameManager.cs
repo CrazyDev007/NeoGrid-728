@@ -4,40 +4,15 @@ using Game.Application.UseCases;
 using Game.Presentation.Views;
 using UnityEngine;
 
-namespace Managers
+namespace Game.Bootstrap
 {
-    public class GameManager : MonoBehaviour, IGameEndListener
+    public class GameManager : MonoBehaviour, IGameEndListener, ITurnCompleteListener, ICardMatchListener, ICardListener
     {
         public static GameManager Instance;
-        public GameMode gameMode;
-
-        private int _matchesCount;
-        private int _turnsCount;
+        //public GameMode gameMode;
 
         public int PairsCount { get; set; }
         public List<CardView> CardViews { get; set; } = new List<CardView>();
-
-        public ICardView SelectedCardView;
-
-        public int MatchesCount
-        {
-            get => _matchesCount;
-            set
-            {
-                _matchesCount = value;
-                OnMatchesCountChanged?.Invoke(value);
-            }
-        }
-
-        public int TurnsCount
-        {
-            get => _turnsCount;
-            set
-            {
-                _turnsCount = value;
-                OnTurnsCountChanged?.Invoke(_turnsCount);
-            }
-        }
 
         public void AddCardViews(List<CardView> cardViews)
         {
@@ -64,18 +39,18 @@ namespace Managers
 
         private void InitializeGameManager()
         {
-            gameMode = SaveManager.Singleton.LoadGameMode();
+            //gameMode = SaveManager.Singleton.LoadGameMode();
         }
 
-        public void SaveGameMode(GameMode gameModeToSave)
+        /*public void SaveGameMode(GameMode gameModeToSave)
         {
             gameMode = gameModeToSave;
             SaveManager.Singleton.SaveGameMode(gameMode);
-        }
+        }*/
 
         public void LoadGameMode()
         {
-            gameMode = SaveManager.Singleton.LoadGameMode();
+            //gameMode = SaveManager.Singleton.LoadGameMode();
             //Debug.Log("Loaded Game Mode: " + gameMode);
         }
 
@@ -94,16 +69,25 @@ namespace Managers
 
         public void ResetGame()
         {
-            MatchesCount = 0;
-            TurnsCount = 0;
-            SelectedCardView = null;
-            PairsCount = 0;
-            CardViews.Clear();
         }
 
         public void OnGameEnded()
         {
             EventOnGameEnded?.Invoke();
+        }
+
+        public void UpdateCardView()
+        {
+        }
+
+        public void OnTurnCompleted(int turnCount)
+        {
+            OnTurnsCountChanged?.Invoke(turnCount);
+        }
+
+        public void OnCardMatched(int matchCount)
+        {
+            OnMatchesCountChanged?.Invoke(matchCount);
         }
     }
 }

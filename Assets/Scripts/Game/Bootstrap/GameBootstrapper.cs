@@ -12,7 +12,7 @@ namespace Game.Bootstrap
 
         private void Awake()
         {
-            // Application
+            /*// Application
             var cardMatchUseCase = new CardMatchUseCase(null);
 
             // Domain + Presentation
@@ -24,7 +24,7 @@ namespace Game.Bootstrap
                 var presenter = new CardPresenter(cardView, cardUseCase, cardMatchUseCase);
                 // Initialize view with presenter
                 cardView.Initialize(presenter);
-            }
+            }*/
         }
     }
 }

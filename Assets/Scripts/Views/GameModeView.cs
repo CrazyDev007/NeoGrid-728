@@ -10,7 +10,7 @@ namespace Views
         {
             if (toggleView.IsOn)
             {
-                GameManager.Instance.SaveGameMode(toggleView.GameMode);
+                //GameManager.Instance.SaveGameMode(toggleView.GameMode);
             }
         }
     }
