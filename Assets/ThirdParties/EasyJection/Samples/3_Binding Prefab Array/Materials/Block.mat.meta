@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 07a3472c56580b74e850d6e5d2f5d65a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/Samples/3_Binding Prefab Array/Materials/Block.mat
+  uploadId: 578196

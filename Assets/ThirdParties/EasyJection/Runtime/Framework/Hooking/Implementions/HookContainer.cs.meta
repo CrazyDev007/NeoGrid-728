@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 1f5ae1b182e1d1d42a478f74459fb617
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/Runtime/Framework/Hooking/Implementions/HookContainer.cs
+  uploadId: 578196

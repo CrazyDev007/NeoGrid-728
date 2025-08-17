@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 03da5094381816b43b99b1838116b682
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/Samples/3_Binding Prefab Array/Prefabs/Scripts/Rotate.cs
+  uploadId: 578196

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0e71de8a4a0ac79448523d97720ea3ae
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/Samples/3_Binding Prefab Array/CircleFormation.cs
+  uploadId: 578196

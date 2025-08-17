@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 85afdf2a01a23954badc8b0fbd6aa1f5
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/Samples/imaxs.EasyJection.Samples.asmdef
+  uploadId: 578196

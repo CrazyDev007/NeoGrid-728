@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 075422dad60a9494a9cc0aee007b55d0
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/CHANGELOG.md
+  uploadId: 578196

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 3adfaf2ac89c5694ebf038f51b5fdcae
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/Samples/1_Simple Binding/IRotate.cs
+  uploadId: 578196

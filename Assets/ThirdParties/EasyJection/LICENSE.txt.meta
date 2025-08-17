@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: aee45b35a12c742ebabbf37645a1fe35
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/LICENSE.txt
+  uploadId: 578196

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c4ccd1558e7985b4eb7f2685ccaa6a16
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/Runtime/Framework/Reflection/Implementions/MethodInfo.cs
+  uploadId: 578196

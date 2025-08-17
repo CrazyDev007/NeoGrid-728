@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4a8c7324c4c75f64c98252cec052eec9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/Samples/1_Simple Binding/EntryPoint.cs
+  uploadId: 578196

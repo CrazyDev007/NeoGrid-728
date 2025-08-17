@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e8300fb6bea2b574a9c70408ead8ca88
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/Samples/1_Simple Binding/Simple Binding.unity
+  uploadId: 578196

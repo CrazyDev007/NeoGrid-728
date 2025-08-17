@@ -14,7 +14,7 @@ namespace Game.Infrastructure
         [SerializeField] private GameObject loadingScreen;
         [SerializeField] private Slider loadingSlider;
 
-        private LoadingPresenter _loadingPresenter;
+        private ILoadingPresenter _loadingPresenter;
 
         private void Awake()
         {
@@ -26,7 +26,16 @@ namespace Game.Infrastructure
 
             Instance = this;
             //DontDestroyOnLoad(gameObject);
+        }
+
+        private void Start()
+        {
             LoadSceneAdditive(defaultScene);
+        }
+
+        public void LoadSceneAdditive(string sceneName)
+        {
+            StartCoroutine(LoadSceneAdditiveAsync(sceneName));
         }
 
         public void LoadSceneByName(string sceneName)
@@ -59,12 +68,6 @@ namespace Game.Infrastructure
 
             loadingScreen.SetActive(false);
             Debug.Log($"Scene '{sceneName}' loaded successfully.");
-        }
-
-
-        public void LoadSceneAdditive(string sceneName)
-        {
-            StartCoroutine(LoadSceneAdditiveAsync(sceneName));
         }
 
         private IEnumerator LoadSceneAdditiveAsync(string sceneName)

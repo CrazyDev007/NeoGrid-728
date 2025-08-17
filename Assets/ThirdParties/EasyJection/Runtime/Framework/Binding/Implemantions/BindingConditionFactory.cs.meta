@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a096b673efd61ec4fa18355b88940ec5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252785
+  packageName: EasyJection (Dependency Injection Framework)
+  packageVersion: 1.0.3
+  assetPath: Assets/EasyJection/Runtime/Framework/Binding/Implemantions/BindingConditionFactory.cs
+  uploadId: 578196
