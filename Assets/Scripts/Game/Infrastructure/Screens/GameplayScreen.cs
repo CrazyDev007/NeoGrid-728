@@ -1,3 +1,4 @@
+using System;
 using Game.Presentation;
 using UnityEngine;
 
@@ -7,23 +8,20 @@ namespace Game.Infrastructure.Screens
     {
         private IGameplayListener _gameplayListener;
 
-        private void Awake()
-        {
-        }
-
-        private void Start()
-        {
-            if (_gameplayListener != null) ((GameplayListener)_gameplayListener).OnGameEndEvent += EventOnGameEnded;
-        }
-
-        private static void EventOnGameEnded()
+        private void EventOnGameEnded()
         {
             Debug.Log("Game Ended");
             UIManager.Instance.ShowScreen(UIScreenType.GameEnd);
         }
 
+        private void Awake()
+        {
+            
+        }
+
         private void OnEnable()
         {
+            ((GameplayListener)_gameplayListener).OnGameEndEvent += EventOnGameEnded;
         }
 
         private void OnDisable()

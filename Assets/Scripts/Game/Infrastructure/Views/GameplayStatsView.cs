@@ -10,24 +10,16 @@ namespace Game.Infrastructure.Views
 
         private IGameplayListener _gameplayListener;
 
-        private void Awake()
-        {
-        }
-
         private void Start()
         {
             OnTurnsCountChanged(0);
             OnMatchesCountChanged(0);
-            if (_gameplayListener != null)
-            {
-                ((GameplayListener)_gameplayListener).OnMatchesCountChangeEvent += OnMatchesCountChanged;
-                ((GameplayListener)_gameplayListener).OnTurnsCountChangeEvent += OnTurnsCountChanged;
-            }
         }
 
         private void OnEnable()
         {
-            //GameManager.OnTurnsCountChanged += OnTurnsCountChanged;
+            ((GameplayListener)_gameplayListener).OnMatchesCountChangeEvent += OnMatchesCountChanged;
+            ((GameplayListener)_gameplayListener).OnTurnsCountChangeEvent += OnTurnsCountChanged;
         }
 
         private void OnTurnsCountChanged(int turnsCount)

@@ -21,10 +21,6 @@ namespace Game.Bootstrap
 
         private IGameplayListener _gameplayListener;
 
-        private void Awake()
-        {
-        }
-
         private void Initialize()
         {
             //Debug.Log(_gameplayListener.GetMessage());

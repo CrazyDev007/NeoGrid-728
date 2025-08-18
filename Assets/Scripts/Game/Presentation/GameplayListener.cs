@@ -11,11 +11,6 @@ namespace Game.Presentation
         public event Action<int> OnTurnsCountChangeEvent;
         public event Action OnGameEndEvent;
 
-        public GameplayListener()
-        {
-            
-        }
-
         public void OnGameEnded()
         {
             OnGameEndEvent?.Invoke();

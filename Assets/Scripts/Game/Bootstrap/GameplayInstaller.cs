@@ -11,9 +11,9 @@ namespace Game.Bootstrap
     {
         protected override void InstallBindings()
         {
-            Container.Bind<IGameplayListener>().ToSingleton<GameplayListener>(UseDefaultConstructor: true);
-            Container.Bind<GameInitializer>().ToSelf().InjectionTo().MethodVoid("Awake");
-            Container.Bind<GameplayStatsView>().ToSelf().InjectionTo().MethodVoid("Awake");
+            Container.Bind<IGameplayListener>().ToSingleton<GameplayListener>(true);
+            Container.Bind<GameInitializer>().ToSelf(true);
+            Container.Bind<GameplayStatsView>().ToSelf(true);
             Container.Bind<GameplayScreen>().ToSelf().InjectionTo().MethodVoid("Awake");
         }
     }
