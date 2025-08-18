@@ -1,9 +1,21 @@
+using Game.Presentation;
 using UnityEngine;
 
 namespace Game.Infrastructure.Screens
 {
     public class GameplayScreen : UIScreen
     {
+        private IGameplayListener _gameplayListener;
+
+        private void Awake()
+        {
+        }
+
+        private void Start()
+        {
+            if (_gameplayListener != null) ((GameplayListener)_gameplayListener).OnGameEndEvent += EventOnGameEnded;
+        }
+
         private static void EventOnGameEnded()
         {
             Debug.Log("Game Ended");
@@ -12,12 +24,11 @@ namespace Game.Infrastructure.Screens
 
         private void OnEnable()
         {
-            //GameManager.EventOnGameEnded += EventOnGameEnded;
         }
 
         private void OnDisable()
         {
-            //GameManager.EventOnGameEnded -= EventOnGameEnded;
+            ((GameplayListener)_gameplayListener).OnGameEndEvent += EventOnGameEnded;
         }
     }
 }

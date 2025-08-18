@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Game.Presentation.Presenters;
 using Game.Presentation.Views;
@@ -11,6 +12,8 @@ namespace Game.Infrastructure
     {
         public string defaultScene;
         public static LoadingManager Instance;
+
+        public static event Action OnLoadComplete;
 
         [SerializeField] private GameObject loadingScreen;
         [SerializeField] private Slider loadingSlider;
@@ -42,7 +45,6 @@ namespace Game.Infrastructure
 
         public void LoadSceneAdditive(string sceneName)
         {
-            //Debug.Log(">>>>> Loading scene " + _loadingPresenter.GetTestMessage());
             StartCoroutine(LoadSceneAdditiveAsync(sceneName));
         }
 
@@ -101,6 +103,19 @@ namespace Game.Infrastructure
                 yield return null;
             }
 
+            // Example: set "MainScene" as default active scene 
+            var scene = SceneManager.GetSceneByName(sceneName);
+            if (scene.IsValid())
+            {
+                SceneManager.SetActiveScene(scene);
+                Debug.Log("Active Scene set to: " + scene.name);
+            }
+            else
+            {
+                Debug.LogWarning("Scene not found or not loaded: MainScene");
+            }
+
+            OnLoadComplete?.Invoke();
             loadingScreen.SetActive(false);
             Debug.Log($"Scene '{sceneName}' loaded additively.");
         }

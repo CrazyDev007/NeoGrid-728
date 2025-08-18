@@ -18,8 +18,11 @@ namespace Game.Infrastructure.Views
         {
             OnTurnsCountChanged(0);
             OnMatchesCountChanged(0);
-            ((GameplayListener)_gameplayListener).OnMatchesCountChangeEvent += OnMatchesCountChanged;
-            ((GameplayListener)_gameplayListener).OnTurnsCountChangeEvent += OnTurnsCountChanged;
+            if (_gameplayListener != null)
+            {
+                ((GameplayListener)_gameplayListener).OnMatchesCountChangeEvent += OnMatchesCountChanged;
+                ((GameplayListener)_gameplayListener).OnTurnsCountChangeEvent += OnTurnsCountChanged;
+            }
         }
 
         private void OnEnable()
@@ -40,7 +43,7 @@ namespace Game.Infrastructure.Views
         private void OnDisable()
         {
             ((GameplayListener)_gameplayListener).OnMatchesCountChangeEvent -= OnMatchesCountChanged;
-            ((GameplayListener)_gameplayListener).OnTurnsCountChangeEvent -= OnMatchesCountChanged;
+            ((GameplayListener)_gameplayListener).OnTurnsCountChangeEvent -= OnTurnsCountChanged;
         }
     }
 }

@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using Game.Application.UseCases;
 using Game.Domain.Entities;
+using Game.Infrastructure;
 using Game.Presentation;
 using Game.Presentation.Presenters;
 using Game.Presentation.Views;
@@ -23,12 +23,11 @@ namespace Game.Bootstrap
 
         private void Awake()
         {
-            
         }
 
-        private void Start()
+        private void Initialize()
         {
-            Debug.Log(_gameplayListener.GetMessage());
+            //Debug.Log(_gameplayListener.GetMessage());
             var cardViews = new List<CardView>();
             var cardMatchUseCase = new CardMatchUseCase((IGameEndListener)_gameplayListener,
                 (ICardListener)_gameplayListener, (ICardMatchListener)_gameplayListener,
@@ -77,43 +76,22 @@ namespace Game.Bootstrap
             {
                 cardViews[i].UpdateCartID(cardSymbols[i]);
             }
-
-
-            //GameManager.Instance.AddCardViews(cardViews);
-            // Post Initialize
-            // Application
-            //var cardMatchUseCase = new CardMatchUseCase();
-
-            // Domain + Presentation
-            /*foreach (var cardView in cardViews)
-            {
-                // Create Card Entity and UseCase
-                var cardUseCase = new CardUseCase(new CardEntity());
-                // Create presenter with a shared use case
-                var presenter = new CardPresenter(cardView, cardUseCase, cardMatchUseCase);
-                // Initialize view with presenter
-                cardView.Initialize(presenter);
-            }*/
         }
 
-        private void Awake_1()
+        private void HandleLoadComplete()
         {
-            var ratio = spaceBetweenCards / 2;
-            var startX = -((columnCount - 1) * ratio);
-            for (var i = 0; i < columnCount; i++)
-            {
-                Instantiate(cardViewPrefab, new Vector3(startX + (i * spaceBetweenCards), 0, 0),
-                    Quaternion.identity);
-            }
+            Debug.Log(">>>>> Load Complete");
+            Initialize();
         }
 
-        public void ResetGame()
+        private void OnEnable()
         {
-            /*MatchesCount = 0;
-            TurnsCount = 0;
-            SelectedCardView = null;
-            PairsCount = 0;
-            CardViews.Clear();*/
+            LoadingManager.OnLoadComplete += HandleLoadComplete;
+        }
+
+        private void OnDisable()
+        {
+            LoadingManager.OnLoadComplete -= HandleLoadComplete;
         }
     }
 }

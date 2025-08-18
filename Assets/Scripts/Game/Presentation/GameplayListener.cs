@@ -13,7 +13,7 @@ namespace Game.Presentation
 
         public GameplayListener()
         {
-            Debug.Log("GameplayListener Constructor");
+            
         }
 
         public void OnGameEnded()
@@ -23,13 +23,11 @@ namespace Game.Presentation
 
         public void OnTurnCompleted(int turnCount)
         {
-            Debug.Log("OnTurnCompleted " + turnCount);
             OnTurnsCountChangeEvent?.Invoke(turnCount);
         }
 
         public void OnCardMatched(int matchCount)
         {
-            Debug.Log("OnCardMatched " + matchCount);
             OnMatchesCountChangeEvent?.Invoke(matchCount);
         }
 
