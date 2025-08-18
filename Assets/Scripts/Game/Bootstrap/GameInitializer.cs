@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Game.Application.UseCases;
 using Game.Domain.Entities;
+using Game.Presentation;
 using Game.Presentation.Presenters;
 using Game.Presentation.Views;
 using UnityEngine;
@@ -17,12 +19,20 @@ namespace Game.Bootstrap
 
         [Range(1, 4)] [SerializeField] private float spaceBetweenCards;
 
-        [SerializeField] private GameManager gameManager;
+        private IGameplayListener _gameplayListener;
 
         private void Awake()
         {
+            
+        }
+
+        private void Start()
+        {
+            Debug.Log(_gameplayListener.GetMessage());
             var cardViews = new List<CardView>();
-            var cardMatchUseCase = new CardMatchUseCase(gameManager, gameManager, gameManager, gameManager);
+            var cardMatchUseCase = new CardMatchUseCase((IGameEndListener)_gameplayListener,
+                (ICardListener)_gameplayListener, (ICardMatchListener)_gameplayListener,
+                (ITurnCompleteListener)_gameplayListener);
             // Card Creation Logic
             var ratio = spaceBetweenCards / 2;
             var startX = -((columnCount - 1) * ratio);

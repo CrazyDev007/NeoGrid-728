@@ -1,21 +1,29 @@
+using Game.Presentation;
 using UnityEngine;
 
-namespace Game.Infrastructure
+namespace Game.Infrastructure.Views
 {
     public class GameplayStatsView : MonoBehaviour
     {
         [SerializeField] private GameplayStatItemView matchesCountItemView;
         [SerializeField] private GameplayStatItemView turnsCountItemView;
 
+        private IGameplayListener _gameplayListener;
+
+        private void Awake()
+        {
+        }
+
         private void Start()
         {
             OnTurnsCountChanged(0);
             OnMatchesCountChanged(0);
+            ((GameplayListener)_gameplayListener).OnMatchesCountChangeEvent += OnMatchesCountChanged;
+            ((GameplayListener)_gameplayListener).OnTurnsCountChangeEvent += OnTurnsCountChanged;
         }
 
         private void OnEnable()
         {
-            //GameManager.OnMatchesCountChanged += OnMatchesCountChanged;
             //GameManager.OnTurnsCountChanged += OnTurnsCountChanged;
         }
 
@@ -31,8 +39,8 @@ namespace Game.Infrastructure
 
         private void OnDisable()
         {
-            //GameManager.OnMatchesCountChanged -= OnMatchesCountChanged;
-            //GameManager.OnTurnsCountChanged -= OnTurnsCountChanged;
+            ((GameplayListener)_gameplayListener).OnMatchesCountChangeEvent -= OnMatchesCountChanged;
+            ((GameplayListener)_gameplayListener).OnTurnsCountChangeEvent -= OnMatchesCountChanged;
         }
     }
 }
