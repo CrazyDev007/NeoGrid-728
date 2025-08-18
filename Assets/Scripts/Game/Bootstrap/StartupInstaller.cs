@@ -15,7 +15,7 @@ namespace Game.Bootstrap
             Container.Bind<ILoadingState>().To<LoadingState>();
             Container.Bind<ILoadSceneUseCase>().To<LoadSceneUseCase>();
             Container.Bind<ILoadingPresenter>().To<LoadingPresenter>();
-            Container.Bind<LoadingManager>().ToSelf().InjectionTo().MethodVoid("Awake");
+            Container.Bind<LoadingManager>().ToSelf(UseDefaultConstructor: true);
         }
     }
 }

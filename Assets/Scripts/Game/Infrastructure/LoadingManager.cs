@@ -30,11 +30,11 @@ namespace Game.Infrastructure
 
             Instance = this;
             //DontDestroyOnLoad(gameObject);
+            _loadingPresenter.Initialize(this);
         }
 
         private void Start()
         {
-            _loadingPresenter.Initialize(this);
             LoadSceneAdditive(defaultScene);
         }
 
