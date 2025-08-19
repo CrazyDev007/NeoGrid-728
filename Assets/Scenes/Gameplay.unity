@@ -784,7 +784,7 @@ GameObject:
   - component: {fileID: 1620714153}
   - component: {fileID: 1620714152}
   m_Layer: 0
-  m_Name: GameplayInstaller
+  m_Name: Gameplay Installer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,7 +802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e95046129460145b062d21e53f9a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjects: []
 --- !u!4 &1620714153
 Transform:
   m_ObjectHideFlags: 0

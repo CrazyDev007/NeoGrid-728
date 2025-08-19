@@ -20,6 +20,8 @@ namespace Game.Infrastructure
 
         private ILoadingPresenter _loadingPresenter;
 
+        public void Init(ILoadingPresenter loadingPresenter) => _loadingPresenter = loadingPresenter;
+
         private void Awake()
         {
             if (Instance != null && Instance == this)
@@ -29,8 +31,6 @@ namespace Game.Infrastructure
             }
 
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
-            _loadingPresenter.Initialize(this);
         }
 
         private void Start()

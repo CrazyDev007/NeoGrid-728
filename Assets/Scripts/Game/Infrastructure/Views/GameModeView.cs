@@ -1,7 +1,6 @@
 using UnityEngine;
-using Views;
 
-namespace Game.Infrastructure
+namespace Game.Infrastructure.Views
 {
     public class GameModeView : MonoBehaviour
     {

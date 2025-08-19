@@ -6,7 +6,6 @@ namespace Game.Infrastructure
 {
     public class UIManager : MonoBehaviour
     {
-        public static UIManager Instance { get; private set; }
         [SerializeField] private List<UIScreenMapping> screenMappings;
 
         private readonly Dictionary<UIScreenType, UIScreen> _screens = new Dictionary<UIScreenType, UIScreen>();
@@ -15,19 +14,13 @@ namespace Game.Infrastructure
 
         private void Awake()
         {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            Instance = this;
-
             foreach (var mapping in screenMappings)
             {
                 if (mapping.screen != null && !_screens.ContainsKey(mapping.type))
                 {
-                    _screens.Add(mapping.type, mapping.screen);
+                    var uiScreen = mapping.screen;
+                    uiScreen.UiManager = this;
+                    _screens.Add(mapping.type, uiScreen);
                     if (mapping.isDefault)
                     {
                         ShowScreen(mapping.type);

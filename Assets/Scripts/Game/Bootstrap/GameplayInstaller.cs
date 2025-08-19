@@ -1,4 +1,3 @@
-using EasyJection;
 using Game.Infrastructure.Screens;
 using Game.Infrastructure.Views;
 using Game.Presentation;
@@ -11,10 +10,16 @@ namespace Game.Bootstrap
     {
         protected override void InstallBindings()
         {
-            Container.Bind<IGameplayListener>().ToSingleton<GameplayListener>(true);
-            Container.Bind<GameInitializer>().ToSelf(true);
-            Container.Bind<GameplayStatsView>().ToSelf(true);
-            Container.Bind<GameplayScreen>().ToSelf().InjectionTo().MethodVoid("Awake");
+            IGameplayListener gameplayListener = new GameplayListener();
+            // GameInitializer
+            var gameInitializer = FindAnyObjectByType<GameInitializer>();
+            gameInitializer.Init(gameplayListener);
+            // GameplayStatsView
+            var gameplayStatsView = FindAnyObjectByType<GameplayStatsView>();
+            gameplayStatsView.Init(gameplayListener);
+            // GameplayScreen
+            var gameplayScreen = FindAnyObjectByType<GameplayScreen>();
+            gameplayScreen.Init(gameplayListener);
         }
     }
 }

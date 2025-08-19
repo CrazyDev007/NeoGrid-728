@@ -1,4 +1,3 @@
-using EasyJection;
 using Game.Application.UseCases;
 using Game.Domain.Entities;
 using Game.Infrastructure;
@@ -12,10 +11,17 @@ namespace Game.Bootstrap
     {
         protected override void InstallBindings()
         {
-            Container.Bind<ILoadingState>().To<LoadingState>();
-            Container.Bind<ILoadSceneUseCase>().To<LoadSceneUseCase>();
-            Container.Bind<ILoadingPresenter>().To<LoadingPresenter>();
-            Container.Bind<LoadingManager>().ToSelf(UseDefaultConstructor: true);
+            // Loading State
+            ILoadingState loadingState = new LoadingState();
+            // Load Scene Use Case
+            ILoadSceneUseCase loadSceneUseCase = new LoadSceneUseCase(loadingState);
+            // Loading Presenter
+            ILoadingPresenter loadingPresenter = new LoadingPresenter(loadSceneUseCase);
+            // Loading Manager
+            var loadingManager = FindAnyObjectByType<LoadingManager>();
+            loadingManager.Init(loadingPresenter);
+            loadingPresenter.Init(loadingManager);
+            //
         }
     }
 }

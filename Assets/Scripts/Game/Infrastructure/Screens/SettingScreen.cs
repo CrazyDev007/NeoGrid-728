@@ -1,12 +1,10 @@
-using Game.Infrastructure;
-
-namespace Views.Screens
+namespace Game.Infrastructure.Screens
 {
     public class SettingScreen : UIScreen
     {
         public void OnClickBtnBack()
         {
-            UIManager.Instance.ShowScreen(UIScreenType.Lobby);
+            UiManager.ShowScreen(UIScreenType.Lobby);
             Hide();
         }
     }

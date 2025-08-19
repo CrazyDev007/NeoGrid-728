@@ -10,6 +10,8 @@ namespace Game.Infrastructure.Views
 
         private IGameplayListener _gameplayListener;
 
+        public void Init(IGameplayListener gameplayListener) => _gameplayListener = gameplayListener;
+
         private void Start()
         {
             OnTurnsCountChanged(0);
