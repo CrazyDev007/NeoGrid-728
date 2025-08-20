@@ -4,7 +4,7 @@ namespace Game.Domain.Entities
     {
         Closed,
         Opened,
-        Locked
+        Matched,
     }
 
     public class CardEntity
@@ -12,5 +12,6 @@ namespace Game.Domain.Entities
         public int CardId { get; set; }
         public bool IsMatched { get; set; }
         public CardState CardState { get; set; }
+        public bool IsLocked { get; set; }
     }
 }

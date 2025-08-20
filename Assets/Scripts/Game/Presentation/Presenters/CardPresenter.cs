@@ -47,7 +47,7 @@ namespace Game.Presentation.Presenters
                 _cardView.OpenCard();
             else if (_cardUseCase.IsClose())
                 _cardView.CloseCard();
-            else if (_cardUseCase.IsLocked())
+            else if (_cardUseCase.IsMatched())
                 _cardView.LockCard();
             else
                 _cardView.CloseCard();
@@ -70,7 +70,7 @@ namespace Game.Presentation.Presenters
 
         public void HandleActionLockCard()
         {
-            _cardUseCase.SetLocked();
+            _cardUseCase.SetMatched();
             UpdateCardStateView();
         }
 
@@ -88,7 +88,6 @@ namespace Game.Presentation.Presenters
         public void OnGameEnded()
         {
             Debug.Log("Game ended");
-            
         }
     }
 }

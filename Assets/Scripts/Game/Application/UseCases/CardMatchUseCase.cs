@@ -26,7 +26,7 @@ namespace Game.Application.UseCases
         }
 
 
-        public async Task SelectCard(CardUseCase cardUseCase)
+        public void SelectCard(CardUseCase cardUseCase)
         {
             if (_firstSelected == null)
             {
@@ -44,18 +44,28 @@ namespace Game.Application.UseCases
                 return;
             }
 
-            cardUseCase.SetOpen();
-            cardUseCase.CardListener.UpdateCardView();
+            _ = RunCardProcess(_firstSelected, cardUseCase);
+            _firstSelected = null;
+        }
+
+        private async Task RunCardProcess(CardUseCase cardUseCase1, CardUseCase cardUseCase2)
+        {
+            // Lock the cards
+            cardUseCase1.SetLocked(true);
+            cardUseCase2.SetLocked(true);
+            //
+            cardUseCase2.SetOpen();
+            cardUseCase2.CardListener.UpdateCardView();
 
             await Task.Delay(1000);
             // compare with first
-            if (_firstSelected.GetCardID() == cardUseCase.GetCardID())
+            if (cardUseCase1.GetCardID() == cardUseCase2.GetCardID())
             {
-                _firstSelected.SetLocked();
-                cardUseCase.SetLocked();
+                cardUseCase1.SetMatched();
+                cardUseCase2.SetMatched();
                 //
-                _firstSelected.CardListener.UpdateCardView();
-                cardUseCase.CardListener.UpdateCardView();
+                cardUseCase1.CardListener.UpdateCardView();
+                cardUseCase2.CardListener.UpdateCardView();
 
                 MatchCount++;
                 _cardMatchListener.OnCardMatched(MatchCount);
@@ -66,16 +76,19 @@ namespace Game.Application.UseCases
             }
             else
             {
-                _firstSelected.SetClosed();
-                cardUseCase.SetClosed();
+                // Unlock the cards
+                cardUseCase1.SetLocked(false);
+                cardUseCase2.SetLocked(false);
                 //
-                _firstSelected.CardListener.UpdateCardView();
-                cardUseCase.CardListener.UpdateCardView();
+                cardUseCase1.SetClosed();
+                cardUseCase2.SetClosed();
+                //
+                cardUseCase1.CardListener.UpdateCardView();
+                cardUseCase2.CardListener.UpdateCardView();
             }
 
             TurnCount++;
             _turnCompleteListener.OnTurnCompleted(TurnCount);
-            _firstSelected = null;
         }
     }
 }
