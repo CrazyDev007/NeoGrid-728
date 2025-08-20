@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Game.Infrastructure.Screens
 {
     public class LobbyScreen : UIScreen
@@ -13,6 +15,11 @@ namespace Game.Infrastructure.Screens
         {
             UiManager.ShowScreen(UIScreenType.Setting);
             Hide();
+        }
+
+        public void OnClickBtnQuitGame()
+        {
+            Application.Quit();
         }
     }
 }
