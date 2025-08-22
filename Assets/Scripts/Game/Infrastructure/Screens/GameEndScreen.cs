@@ -1,13 +1,29 @@
 using System.Threading.Tasks;
+using Game.Application.UseCases;
+using Game.Presentation.Presenters;
+using Game.Presentation.Views;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Infrastructure.Screens
 {
-    public class GameEndScreen : UIScreen
+    public class GameEndScreen : UIScreen, IGameEndView
     {
-        public void OnClickedNextButton()
+        [SerializeField] private Image backgroundImage;
+        private IGameEndPresenter _gameEndPresenter;
+
+        public void Init(IGameEndPresenter gameEndPresenter) => _gameEndPresenter = gameEndPresenter;
+        private void Awake() => _gameEndPresenter.ApplyTheme();
+
+        public void ApplyTheme(ThemeDto currentTheme)
         {
-            _ = RestartGame();
+            backgroundImage.color =
+                ColorUtility.TryParseHtmlString(currentTheme.BackgroundColor, out var backgroundColor)
+                    ? backgroundColor
+                    : Color.white;
         }
+
+        public void OnClickedNextButton() => _ = RestartGame();
 
         private async Task RestartGame()
         {

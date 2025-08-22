@@ -916,6 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 1361933839}
+  backgroundImage: {fileID: 1361933841}
 --- !u!1 &2045697570
 GameObject:
   m_ObjectHideFlags: 0

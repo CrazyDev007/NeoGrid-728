@@ -1,11 +1,10 @@
 using Game.Infrastructure.Screens;
 using Game.Infrastructure.Views;
 using Game.Presentation;
-using UnityEngine;
+using Game.Presentation.Presenters;
 
 namespace Game.Bootstrap
 {
-    [DefaultExecutionOrder(-8000)]
     public class GameplayInstaller : MonoInstaller
     {
         protected override void InstallBindings()
@@ -20,6 +19,12 @@ namespace Game.Bootstrap
             // GameplayScreen
             var gameplayScreen = FindAnyObjectByType<GameplayScreen>();
             gameplayScreen.Init(gameplayListener);
+            // Game End Screen
+            var themeRepository = new PlayerPrefsThemeRepository();
+            var gameEndPresenter = new GameEndPresenter(themeRepository);
+            var gameEndScreen = FindAnyObjectByType<GameEndScreen>();
+            gameEndScreen.Init(gameEndPresenter);
+            gameEndPresenter.Init(gameEndScreen);
         }
     }
 }
