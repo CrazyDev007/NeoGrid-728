@@ -47,7 +47,7 @@ namespace Game.Infrastructure
 
         public void LoadSceneAdditive(string sceneName)
         {
-            //StartCoroutine(LoadSceneAdditiveAsync(sceneName));
+            StartCoroutine(LoadSceneAdditiveAsync(sceneName));
         }
 
         public void LoadSceneByName(string sceneName)
