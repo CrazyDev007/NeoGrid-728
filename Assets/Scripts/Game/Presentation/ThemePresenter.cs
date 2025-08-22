@@ -26,10 +26,6 @@ namespace Game.Presentation
             _themeView.SetBackgroundColor(ColorUtility.TryParseHtmlString(themeDto.BackgroundColor, out var bgColor)
                 ? bgColor
                 : Color.white);
-            //_themeView.SetBorderColor(Color.white);
-            _themeView.SetFontColor(ColorUtility.TryParseHtmlString(themeDto.TextColor, out var fontColor)
-                ? fontColor
-                : Color.black);
         }
     }
 }

@@ -148,9 +148,6 @@ namespace Game.Infrastructure
 
         public void ApplyTheme(ThemeDto theme)
         {
-            loadingText.color = ColorUtility.TryParseHtmlString(theme.TextColor, out var texColor)
-                ? texColor
-                : Color.white;
             loadingBackground.color = ColorUtility.TryParseHtmlString(theme.BackgroundColor, out var bgColor)
                 ? bgColor
                 : Color.white;

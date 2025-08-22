@@ -11,8 +11,8 @@ namespace Game.Presentation
         {
             var themeName = PlayerPrefs.GetString(ThemeKey, "default");
             return string.Equals(themeName, "dark")
-                ? new ThemeDto("dark", "#000000", "#FFFFFF")
-                : new ThemeDto("light", "#FFFFFF", "#000000");
+                ? new ThemeDto("dark", "#121212")
+                : new ThemeDto("light", "#D3D3D3");
         }
 
         public void SaveTheme(string newThemeName)

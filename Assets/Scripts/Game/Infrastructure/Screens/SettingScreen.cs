@@ -1,7 +1,6 @@
 using Game.Application.UseCases;
 using Game.Presentation.Presenters;
 using Game.Presentation.Views;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,22 +9,14 @@ namespace Game.Infrastructure.Screens
     public class SettingScreen : UIScreen, ISettingView
     {
         // Theme
-        [SerializeField] private TextMeshProUGUI[] texts;
-
         [SerializeField] private Image[] images;
 
         //
         private ISettingPresenter _settingPresenter;
 
-        public void Init(ISettingPresenter settingPresenter)
-        {
-            _settingPresenter = settingPresenter;
-        }
+        public void Init(ISettingPresenter settingPresenter) => _settingPresenter = settingPresenter;
 
-        private void Awake()
-        {
-            _settingPresenter.ApplyTheme();
-        }
+        private void Awake() => _settingPresenter.ApplyTheme();
 
         public void OnClickBtnBack()
         {
@@ -33,26 +24,12 @@ namespace Game.Infrastructure.Screens
             Hide();
         }
 
-        public void OnClickLightThemeButton()
-        {
-            _settingPresenter.ChangeTheme("light");
-        }
+        public void OnClickLightThemeButton() => _settingPresenter.ChangeTheme("light");
 
-        public void OnClickDarkThemeButton()
-        {
-            _settingPresenter.ChangeTheme("dark");
-        }
+        public void OnClickDarkThemeButton() => _settingPresenter.ChangeTheme("dark");
 
         public void ApplyTheme(ThemeDto theme)
         {
-            // Text Color
-            foreach (var text in texts)
-            {
-                text.color = ColorUtility.TryParseHtmlString(theme.TextColor, out var textColor)
-                    ? textColor
-                    : Color.black;
-            }
-
             // Background Color
             foreach (var image in images)
             {
@@ -61,5 +38,11 @@ namespace Game.Infrastructure.Screens
                     : Color.black;
             }
         }
+
+        private void HandleChangeTheme(ThemeDto theme) => ApplyTheme(theme);
+
+        private void OnEnable() => _settingPresenter.ChangeThemeUseCase.OnChangeTheme += HandleChangeTheme;
+
+        private void OnDisable() => _settingPresenter.ChangeThemeUseCase.OnChangeTheme -= HandleChangeTheme;
     }
 }

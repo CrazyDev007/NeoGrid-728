@@ -9,13 +9,18 @@ namespace Game.Bootstrap
     {
         protected override void InstallBindings()
         {
-            IThemeRepository themeRepository = new PlayerPrefsThemeRepository();
+            var themeRepository = new PlayerPrefsThemeRepository();
             var changeThemeUseCase = new ChangeThemeUseCase(themeRepository);
-            ISettingPresenter settingPresenter = new SettingPresenter(changeThemeUseCase, themeRepository);
-            //
+            var settingPresenter = new SettingPresenter(changeThemeUseCase, themeRepository);
+            // Setting Screen
             var settingScreen = FindAnyObjectByType<SettingScreen>();
             settingScreen.Init(settingPresenter);
             settingPresenter.Init(settingScreen);
+            // Lobby Screen
+            var lobbyPresenter = new LobbyPresenter(themeRepository, changeThemeUseCase);
+            var lobbyScreen = FindAnyObjectByType<LobbyScreen>();
+            lobbyScreen.Init(lobbyPresenter);
+            lobbyPresenter.Init(lobbyScreen);
         }
     }
 }

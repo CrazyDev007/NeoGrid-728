@@ -4,13 +4,11 @@
     {
         public string Name { get; set; }
         public string BackgroundColor { get; set; }
-        public string TextColor { get; set; }
 
-        public ThemeDto(string name, string backgroundColor, string textColor)
+        public ThemeDto(string name, string backgroundColor)
         {
             Name = name;
             BackgroundColor = backgroundColor;
-            TextColor = textColor;
         }
     }
 }

@@ -7,11 +7,11 @@ namespace Game.Presentation.Presenters
     {
         private ISettingView _view;
         private readonly IThemeRepository _themeRepository;
-        private readonly ChangeThemeUseCase _changeThemeUseCase;
+        public ChangeThemeUseCase ChangeThemeUseCase { get; set; }
 
         public SettingPresenter(ChangeThemeUseCase changeThemeUseCase, IThemeRepository themeRepository)
         {
-            _changeThemeUseCase = changeThemeUseCase;
+            ChangeThemeUseCase = changeThemeUseCase;
             _themeRepository = themeRepository;
         }
 
@@ -29,8 +29,7 @@ namespace Game.Presentation.Presenters
 
         public void ChangeTheme(string themeName)
         {
-            _changeThemeUseCase.ChangeTheme(themeName);
-            ApplyTheme();
+            ChangeThemeUseCase.ChangeTheme(themeName);
         }
     }
 }

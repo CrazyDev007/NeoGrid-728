@@ -3,11 +3,10 @@ using Game.Presentation.Views;
 
 namespace Game.Presentation.Presenters
 {
-    public interface ISettingPresenter
+    public interface ILobbyPresenter
     {
         ChangeThemeUseCase ChangeThemeUseCase { get; set; }
-        void Init(ISettingView view);
+        void Init(ILobbyView view);
         void ApplyTheme();
-        void ChangeTheme(string themeName);
     }
 }
