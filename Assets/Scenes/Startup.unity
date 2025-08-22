@@ -1053,6 +1053,8 @@ MonoBehaviour:
   defaultScene: Lobby
   loadingScreen: {fileID: 1373111485}
   loadingSlider: {fileID: 1284424273}
+  loadingText: {fileID: 540866315}
+  loadingBackground: {fileID: 1373111487}
 --- !u!4 &1930122433
 Transform:
   m_ObjectHideFlags: 0

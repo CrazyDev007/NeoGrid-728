@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using Game.Application.UseCases;
 using Game.Presentation.Presenters;
 using Game.Presentation.Views;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,8 +19,11 @@ namespace Game.Infrastructure
 
         [SerializeField] private GameObject loadingScreen;
         [SerializeField] private Slider loadingSlider;
+        [SerializeField] private TextMeshProUGUI loadingText;
+        [SerializeField] private Image loadingBackground;
 
         private ILoadingPresenter _loadingPresenter;
+
 
         public void Init(ILoadingPresenter loadingPresenter) => _loadingPresenter = loadingPresenter;
 
@@ -31,6 +36,8 @@ namespace Game.Infrastructure
             }
 
             Instance = this;
+            //
+            _loadingPresenter.ApplyTheme();
         }
 
         private void Start()
@@ -38,14 +45,9 @@ namespace Game.Infrastructure
             LoadSceneAdditive(defaultScene);
         }
 
-        public string GetTextMessageView()
-        {
-            return "Test Message From View!";
-        }
-
         public void LoadSceneAdditive(string sceneName)
         {
-            StartCoroutine(LoadSceneAdditiveAsync(sceneName));
+            //StartCoroutine(LoadSceneAdditiveAsync(sceneName));
         }
 
         public void LoadSceneByName(string sceneName)
@@ -134,6 +136,24 @@ namespace Game.Infrastructure
             }
 
             Debug.Log($"Scene '{sceneName}' unloaded.");
+        }
+
+        private void ChangeTheme(ThemeDto theme)
+        {
+            //ApplyTheme(theme);
+        }
+
+        public void OnEnable() => _loadingPresenter.ChangeThemeUseCase.OnChangeTheme += ChangeTheme;
+        public void OnDisable() => _loadingPresenter.ChangeThemeUseCase.OnChangeTheme -= ChangeTheme;
+
+        public void ApplyTheme(ThemeDto theme)
+        {
+            loadingText.color = ColorUtility.TryParseHtmlString(theme.TextColor, out var texColor)
+                ? texColor
+                : Color.white;
+            loadingBackground.color = ColorUtility.TryParseHtmlString(theme.BackgroundColor, out var bgColor)
+                ? bgColor
+                : Color.white;
         }
     }
 }

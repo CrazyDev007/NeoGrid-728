@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Game.Infrastructure.Screens
 {
     public class LobbyScreen : UIScreen
@@ -19,7 +17,7 @@ namespace Game.Infrastructure.Screens
 
         public void OnClickBtnQuitGame()
         {
-            Application.Quit();
+            //Application.Quit();
         }
     }
 }

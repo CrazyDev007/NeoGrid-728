@@ -1,7 +1,9 @@
+using Game.Application.UseCases;
+
 namespace Game.Presentation.Views
 {
     public interface ILoadingView
     {
-        string GetTextMessageView();
+        void ApplyTheme(ThemeDto theme);
     }
 }
