@@ -1518,8 +1518,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 62350824}
-  texts:
-  - {fileID: 879261639}
   images:
   - {fileID: 62350826}
 --- !u!224 &1367209617
@@ -2170,7 +2168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 190680611}
-  texts: []
   images:
   - {fileID: 190680613}
 --- !u!1 &2005203960

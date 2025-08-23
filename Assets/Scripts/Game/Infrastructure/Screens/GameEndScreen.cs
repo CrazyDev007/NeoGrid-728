@@ -25,6 +25,12 @@ namespace Game.Infrastructure.Screens
 
         public void OnClickedNextButton() => _ = RestartGame();
 
+        public void OnClickExitGameButton()
+        {
+            LoadingManager.Instance.UnloadScene("Gameplay");
+            LoadingManager.Instance.LoadSceneAdditive("Lobby");
+        }
+
         private async Task RestartGame()
         {
             //GameManager.Instance.ResetGame();

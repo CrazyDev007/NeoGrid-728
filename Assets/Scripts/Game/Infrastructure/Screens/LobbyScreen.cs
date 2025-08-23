@@ -46,7 +46,7 @@ namespace Game.Infrastructure.Screens
 
         public void OnClickBtnQuitGame()
         {
-            //Application.Quit();
+            UnityEngine.Device.Application.Quit();
         }
 
         private void HandleThemeChange(ThemeDto currentTheme) => ApplyTheme(currentTheme);

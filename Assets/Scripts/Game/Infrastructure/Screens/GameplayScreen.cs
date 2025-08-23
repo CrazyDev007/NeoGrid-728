@@ -9,6 +9,12 @@ namespace Game.Infrastructure.Screens
 
         public void Init(IGameplayListener gameplayListener) => _gameplayListener = gameplayListener;
 
+        public void OnClickExitGameButton()
+        {
+            LoadingManager.Instance.UnloadScene("Gameplay");
+            LoadingManager.Instance.LoadSceneAdditive("Lobby");
+        }
+
         private void EventOnGameEnded()
         {
             Debug.Log("Game Ended");
