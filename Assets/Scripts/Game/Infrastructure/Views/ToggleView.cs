@@ -1,10 +1,10 @@
 using System;
-using Game.Presentation;
+using Game.Domain.Entities;
 using Game.Presentation.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Infrastructure
+namespace Game.Infrastructure.Views
 {
     public class ToggleView : MonoBehaviour, IToggleView
     {

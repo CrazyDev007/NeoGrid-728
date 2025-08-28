@@ -9,6 +9,7 @@ namespace Game.Infrastructure.Views
             if (toggleView.IsOn)
             {
                 //GameManager.Instance.SaveGameMode(toggleView.GameMode);
+                SaveManager.SaveGameMode(toggleView.GameMode);
             }
         }
     }

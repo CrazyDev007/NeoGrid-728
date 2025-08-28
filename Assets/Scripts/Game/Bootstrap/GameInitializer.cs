@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Game.Application.UseCases;
 using Game.Domain.Entities;
@@ -15,7 +16,7 @@ namespace Game.Bootstrap
         [SerializeField] private CardView cardViewPrefab;
 
         [Range(2, 6)] [SerializeField] private int rowCount;
-        [Range(2, 6)] [SerializeField] private int columnCount;
+        [Range(2, 4)] [SerializeField] private int columnCount;
 
         [Range(1, 4)] [SerializeField] private float spaceBetweenCards;
 
@@ -74,6 +75,12 @@ namespace Game.Bootstrap
             {
                 cardViews[i].UpdateCartID(cardSymbols[i]);
             }
+        }
+
+        // For Testing Purpose Only
+        private void Awake()
+        {
+            Initialize();
         }
 
         private void HandleLoadComplete()
