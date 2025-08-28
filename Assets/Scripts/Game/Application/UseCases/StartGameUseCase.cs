@@ -8,6 +8,6 @@ namespace Game.Application.UseCases
         private readonly IGameInitializer _gameInitializer;
         public StartGameUseCase(IGameInitializer gameInitializer) => _gameInitializer = gameInitializer;
 
-        public void Execute(GameMode mode) => _gameInitializer.Initialize(mode);
+        public void Execute(GameModeConfig config) => _gameInitializer.Initialize(config);
     }
 }

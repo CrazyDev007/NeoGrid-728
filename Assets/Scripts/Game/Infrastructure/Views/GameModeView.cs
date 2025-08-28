@@ -1,3 +1,4 @@
+using Game.Domain.Entities;
 using UnityEngine;
 
 namespace Game.Infrastructure.Views
@@ -9,7 +10,8 @@ namespace Game.Infrastructure.Views
             if (toggleView.IsOn)
             {
                 //GameManager.Instance.SaveGameMode(toggleView.GameMode);
-                SaveManager.SaveGameMode(toggleView.GameMode);
+                SaveManager.SaveGameMode(new GameModeConfig(toggleView.GameMode, toggleView.rowCount,
+                    toggleView.columnCount));
             }
         }
     }

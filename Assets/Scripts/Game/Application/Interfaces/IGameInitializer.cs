@@ -4,6 +4,6 @@ namespace Game.Application.Interfaces
 {
     public interface IGameInitializer
     {
-        void Initialize(GameMode mode);
+        void Initialize(GameModeConfig config);
     }
 }

@@ -13,6 +13,8 @@ namespace Game.Infrastructure.Views
 
         public GameMode GameMode => mode;
         public bool IsOn => _toggle.isOn;
+        public int rowCount;
+        public int columnCount;
 
         private void Awake()
         {

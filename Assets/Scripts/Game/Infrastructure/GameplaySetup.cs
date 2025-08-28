@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace Game.Infrastructure
 {
-    public class GameInitializer : IGameInitializer
+    public class GameplaySetup : IGameInitializer
     {
-        public void Initialize(GameMode mode)
+        public void Initialize(GameModeConfig config)
         {
-            switch (mode)
+            switch (config.Mode)
             {
                 case GameMode.Easy:
                     Debug.Log("Easy");
@@ -32,7 +32,7 @@ namespace Game.Infrastructure
                     //SaveManager.SaveGameMode(GameMode.Hard);
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
+                    throw new ArgumentOutOfRangeException(nameof(config.Mode), config.Mode, null);
             }
         }
     }

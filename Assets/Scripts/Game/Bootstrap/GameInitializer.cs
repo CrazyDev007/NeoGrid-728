@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Game.Application.UseCases;
 using Game.Domain.Entities;
@@ -77,15 +76,29 @@ namespace Game.Bootstrap
             }
         }
 
+        //private StartGameUseCase _startGameUseCase;
+
         // For Testing Purpose Only
-        private void Awake()
+        private void Awake_1()
         {
+            //var gameplaySetup = new GameplaySetup();
+            //_startGameUseCase = new StartGameUseCase(gameplaySetup);
+            var gameModeConfig = SaveManager.LoadGameMode();
+            //_startGameUseCase.Execute(gameMode);
+            rowCount = gameModeConfig.RowCount;
+            columnCount = gameModeConfig.ColumnCount;
             Initialize();
         }
 
         private void HandleLoadComplete()
         {
             Debug.Log(">>>>> Load Complete");
+            //var gameplaySetup = new GameplaySetup();
+            //_startGameUseCase = new StartGameUseCase(gameplaySetup);
+            var gameModeConfig = SaveManager.LoadGameMode();
+            //_startGameUseCase.Execute(gameMode);
+            rowCount = gameModeConfig.RowCount;
+            columnCount = gameModeConfig.ColumnCount;
             Initialize();
         }
 

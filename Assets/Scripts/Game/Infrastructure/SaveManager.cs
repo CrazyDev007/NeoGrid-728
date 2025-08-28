@@ -7,7 +7,7 @@ namespace Game.Infrastructure
     {
         private static SaveManager _instance;
         private static readonly object Lock = new object();
-        private const string GameModeKey = "GameModeKey";
+        private const string GameModeKey = "GameConfigKey";
 
         public static SaveManager Singleton
         {
@@ -20,16 +20,18 @@ namespace Game.Infrastructure
             }
         }
 
-        public static void SaveGameMode(GameMode gameModeToSave)
+        public static void SaveGameMode(GameModeConfig gameConfigToSave)
         {
-            PlayerPrefs.SetInt(GameModeKey, (int)gameModeToSave);
+            var saveGameData = JsonUtility.ToJson(gameConfigToSave);
+            Debug.Log(">>>>> " + saveGameData);
+            PlayerPrefs.SetString(GameModeKey, saveGameData);
             PlayerPrefs.Save();
         }
 
-        public GameMode LoadGameMode()
+        public static GameModeConfig LoadGameMode()
         {
-            var savedGameModeInt = PlayerPrefs.GetInt(GameModeKey, 0);
-            return (GameMode)savedGameModeInt;
+            var savedGameConfig = PlayerPrefs.GetString(GameModeKey, null);
+            return JsonUtility.FromJson<GameModeConfig>(savedGameConfig);
         }
     }
 }
