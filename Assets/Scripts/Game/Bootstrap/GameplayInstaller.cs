@@ -1,7 +1,9 @@
+using Game.Infrastructure;
 using Game.Infrastructure.Screens;
 using Game.Infrastructure.Views;
 using Game.Presentation;
 using Game.Presentation.Presenters;
+using Game.Presentation.Screens;
 
 namespace Game.Bootstrap
 {
@@ -9,10 +11,11 @@ namespace Game.Bootstrap
     {
         protected override void InstallBindings()
         {
-            IGameplayListener gameplayListener = new GameplayListener();
+            var gameplayListener = new GameplayListener();
+            var saveService = new SaveManager();
             // GameInitializer
             var gameInitializer = FindAnyObjectByType<GameInitializer>();
-            gameInitializer.Init(gameplayListener);
+            gameInitializer.Init(gameplayListener, saveService);
             // GameplayStatsView
             var gameplayStatsView = FindAnyObjectByType<GameplayStatsView>();
             gameplayStatsView.Init(gameplayListener);

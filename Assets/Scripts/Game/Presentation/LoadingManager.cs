@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Game.Infrastructure
+namespace Game.Presentation
 {
     public class LoadingManager : MonoBehaviour, ILoadingView
     {

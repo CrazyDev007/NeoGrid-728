@@ -1,9 +1,10 @@
+using Game.Application.Interfaces;
 using Game.Domain.Entities;
 using UnityEngine;
 
 namespace Game.Infrastructure
 {
-    public class SaveManager
+    public class SaveManager : ISaveService
     {
         private static SaveManager _instance;
         private static readonly object Lock = new object();
@@ -20,7 +21,7 @@ namespace Game.Infrastructure
             }
         }
 
-        public static void SaveGameMode(GameModeConfig gameConfigToSave)
+        public void SaveGameMode(GameModeConfig gameConfigToSave)
         {
             var saveGameData = JsonUtility.ToJson(gameConfigToSave);
             Debug.Log(">>>>> " + saveGameData);
@@ -28,7 +29,7 @@ namespace Game.Infrastructure
             PlayerPrefs.Save();
         }
 
-        public static GameModeConfig LoadGameMode()
+        public GameModeConfig LoadGameMode()
         {
             var savedGameConfig = PlayerPrefs.GetString(GameModeKey, null);
             return JsonUtility.FromJson<GameModeConfig>(savedGameConfig);

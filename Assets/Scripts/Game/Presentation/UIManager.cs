@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Game.Infrastructure;
 using UnityEngine;
 
-namespace Game.Infrastructure
+namespace Game.Presentation
 {
     public class UIManager : MonoBehaviour
     {

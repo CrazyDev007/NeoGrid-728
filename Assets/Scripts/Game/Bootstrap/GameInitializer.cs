@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using Game.Application.Interfaces;
 using Game.Application.UseCases;
 using Game.Domain.Entities;
-using Game.Infrastructure;
 using Game.Presentation;
 using Game.Presentation.Presenters;
 using Game.Presentation.Views;
@@ -20,8 +20,13 @@ namespace Game.Bootstrap
         [Range(1, 4)] [SerializeField] private float spaceBetweenCards;
 
         private IGameplayListener _gameplayListener;
+        private ISaveService _saveService;
 
-        public void Init(IGameplayListener gameplayListener) => _gameplayListener = gameplayListener;
+        public void Init(IGameplayListener gameplayListener, ISaveService saveService)
+        {
+            _gameplayListener = gameplayListener;
+            _saveService = saveService;
+        }
 
         private void Initialize()
         {
@@ -83,7 +88,7 @@ namespace Game.Bootstrap
         {
             //var gameplaySetup = new GameplaySetup();
             //_startGameUseCase = new StartGameUseCase(gameplaySetup);
-            var gameModeConfig = SaveManager.LoadGameMode();
+            var gameModeConfig = _saveService.LoadGameMode();
             //_startGameUseCase.Execute(gameMode);
             rowCount = gameModeConfig.RowCount;
             columnCount = gameModeConfig.ColumnCount;
@@ -95,7 +100,7 @@ namespace Game.Bootstrap
             Debug.Log(">>>>> Load Complete");
             //var gameplaySetup = new GameplaySetup();
             //_startGameUseCase = new StartGameUseCase(gameplaySetup);
-            var gameModeConfig = SaveManager.LoadGameMode();
+            var gameModeConfig = _saveService.LoadGameMode();
             //_startGameUseCase.Execute(gameMode);
             rowCount = gameModeConfig.RowCount;
             columnCount = gameModeConfig.ColumnCount;

@@ -1,4 +1,5 @@
 ﻿using Game.Application.UseCases;
+using Game.Infrastructure;
 using Game.Infrastructure.Screens;
 using Game.Presentation;
 using Game.Presentation.Presenters;
@@ -21,6 +22,10 @@ namespace Game.Bootstrap
             var lobbyScreen = FindAnyObjectByType<LobbyScreen>();
             lobbyScreen.Init(lobbyPresenter);
             lobbyPresenter.Init(lobbyScreen);
+            //
+            var saveService = new SaveManager();
+            var gameModeView = FindAnyObjectByType<GameModeView>();
+            gameModeView.Init(saveService);
         }
     }
 }

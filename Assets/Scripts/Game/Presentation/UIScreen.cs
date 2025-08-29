@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Infrastructure
+namespace Game.Presentation
 {
     public abstract class UIScreen : MonoBehaviour
     {

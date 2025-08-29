@@ -1,9 +1,8 @@
-﻿using Game.Presentation;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Infrastructure
+namespace Game.Presentation
 {
     public class ThemeManager : MonoBehaviour, IThemeView
     {

@@ -5,7 +5,7 @@ using Game.Presentation.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Infrastructure.Screens
+namespace Game.Presentation.Screens
 {
     public class GameEndScreen : UIScreen, IGameEndView
     {
