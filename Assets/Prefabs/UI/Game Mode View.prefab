@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e007d212796e4074bbfa7fcdc1db0a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toggleGroup: {fileID: 4781367947947925731}
 --- !u!1 &5166594066288889868
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.Infrastructure.Views.GameModeView, Game.Infrastructure
+      value: Game.Presentation.GameModeView, Game.Presentation
       objectReference: {fileID: 0}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -653,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 3306671802239697416}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Game.Infrastructure.Views.ToggleView, Game.Infrastructure
+      value: Game.Infrastructure.Views.ToggleView, Game.Presentation
       objectReference: {fileID: 0}
     - target: {fileID: 6220087633154911755, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: m_Pivot.x
@@ -798,7 +799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.Infrastructure.Views.GameModeView, Game.Infrastructure
+      value: Game.Presentation.GameModeView, Game.Presentation
       objectReference: {fileID: 0}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -806,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 2051399415172699190}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Game.Infrastructure.Views.ToggleView, Game.Infrastructure
+      value: Game.Infrastructure.Views.ToggleView, Game.Presentation
       objectReference: {fileID: 0}
     - target: {fileID: 6220087633154911755, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: m_Pivot.x
@@ -955,7 +956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.Infrastructure.Views.GameModeView, Game.Infrastructure
+      value: Game.Presentation.GameModeView, Game.Presentation
       objectReference: {fileID: 0}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -963,7 +964,7 @@ PrefabInstance:
       objectReference: {fileID: 1147195940759688316}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Game.Infrastructure.Views.ToggleView, Game.Infrastructure
+      value: Game.Infrastructure.Views.ToggleView, Game.Presentation
       objectReference: {fileID: 0}
     - target: {fileID: 6220087633154911755, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: m_Pivot.x
@@ -1104,7 +1105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.Infrastructure.Views.GameModeView, Game.Infrastructure
+      value: Game.Presentation.GameModeView, Game.Presentation
       objectReference: {fileID: 0}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -1112,7 +1113,7 @@ PrefabInstance:
       objectReference: {fileID: 8382173281828134384}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Game.Infrastructure.Views.ToggleView, Game.Infrastructure
+      value: Game.Infrastructure.Views.ToggleView, Game.Presentation
       objectReference: {fileID: 0}
     - target: {fileID: 6220087633154911755, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: m_Pivot.x
@@ -1261,7 +1262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.Infrastructure.Views.GameModeView, Game.Infrastructure
+      value: Game.Presentation.GameModeView, Game.Presentation
       objectReference: {fileID: 0}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -1269,7 +1270,7 @@ PrefabInstance:
       objectReference: {fileID: 6437441115301069219}
     - target: {fileID: 5727668326687546811, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Game.Infrastructure.Views.ToggleView, Game.Infrastructure
+      value: Game.Infrastructure.Views.ToggleView, Game.Presentation
       objectReference: {fileID: 0}
     - target: {fileID: 6220087633154911755, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: m_Pivot.x
