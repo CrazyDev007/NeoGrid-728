@@ -1,4 +1,3 @@
-using System;
 using Game.Application.Interfaces;
 using Game.Domain.Entities;
 using Game.Infrastructure.Views;
@@ -19,22 +18,14 @@ namespace Game.Presentation
         {
             var toggles = toggleGroup.GetComponentsInChildren<Toggle>(true);
             var gameModeConfig = _saveService.LoadGameMode();
-            toggles[GetGameModeIndex(gameModeConfig.gameMode)].isOn = true;
-        }
-
-        private static int GetGameModeIndex(GameMode gameMode)
-        {
-            var index = gameMode switch
+            foreach (var toggle in toggles)
             {
-                GameMode.Easy => 0,
-                GameMode.EasyMedium => 1,
-                GameMode.Medium => 2,
-                GameMode.MediumHard => 3,
-                GameMode.Hard => 4,
-                _ => throw new ArgumentOutOfRangeException(nameof(gameMode), gameMode, null)
-            };
-
-            return index;
+                var toggleView = toggle.GetComponent<ToggleView>();
+                if (toggleView.GameMode == gameModeConfig.gameMode)
+                {
+                    toggle.isOn = true;
+                }
+            }
         }
 
         public void OnClickToggle(ToggleView toggleView)
