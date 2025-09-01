@@ -13,12 +13,14 @@ namespace Game.Application.UseCases
         private CardUseCase _firstSelected;
         private int TurnCount { get; set; }
         private int MatchCount { get; set; }
+        private int TotalMatchCount { get; set; }
 
         private bool GameEnd { get; set; }
 
-        public CardMatchUseCase(IGameEndListener gameEndListener,
+        public CardMatchUseCase(int totalMatchCount, IGameEndListener gameEndListener,
             ICardMatchListener cardMatchListener, ITurnCompleteListener turnCompleteListener)
         {
+            TotalMatchCount = totalMatchCount;
             _gameEndListener = gameEndListener;
             _cardMatchListener = cardMatchListener;
             _turnCompleteListener = turnCompleteListener;
@@ -59,7 +61,7 @@ namespace Game.Application.UseCases
 
                 MatchCount++;
                 _cardMatchListener.OnCardMatched(MatchCount);
-                if (MatchCount == 6)
+                if (MatchCount == TotalMatchCount)
                 {
                     _gameEndListener.OnGameEnded();
                 }

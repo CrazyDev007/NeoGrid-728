@@ -32,7 +32,8 @@ namespace Game.Bootstrap
         {
             //Debug.Log(_gameplayListener.GetMessage());
             var cardViews = new List<CardView>();
-            var cardMatchUseCase = new CardMatchUseCase((IGameEndListener)_gameplayListener,
+            var cardMatchUseCase = new CardMatchUseCase(rowCount * columnCount / 2,
+                (IGameEndListener)_gameplayListener,
                 (ICardMatchListener)_gameplayListener,
                 (ITurnCompleteListener)_gameplayListener);
             // Card Creation Logic
