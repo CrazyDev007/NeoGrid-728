@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Game.Domain.Entities;
 
 namespace Game.Application.UseCases
 {
@@ -6,7 +7,6 @@ namespace Game.Application.UseCases
     {
         // Callbacks
         private readonly IGameEndListener _gameEndListener;
-        private readonly ICardListener _cardListener;
         private readonly ICardMatchListener _cardMatchListener;
         private readonly ITurnCompleteListener _turnCompleteListener;
 
@@ -16,11 +16,10 @@ namespace Game.Application.UseCases
 
         private bool GameEnd { get; set; }
 
-        public CardMatchUseCase(IGameEndListener gameEndListener, ICardListener cardListener,
+        public CardMatchUseCase(IGameEndListener gameEndListener,
             ICardMatchListener cardMatchListener, ITurnCompleteListener turnCompleteListener)
         {
             _gameEndListener = gameEndListener;
-            _cardListener = cardListener;
             _cardMatchListener = cardMatchListener;
             _turnCompleteListener = turnCompleteListener;
         }
@@ -31,16 +30,14 @@ namespace Game.Application.UseCases
             if (_firstSelected == null)
             {
                 _firstSelected = cardUseCase;
-                cardUseCase.SetOpen();
-                cardUseCase.CardListener.UpdateCardView();
+                cardUseCase.CardListener.UpdateCardView(false, CardState.Flipping, CardState.Opened);
                 return;
             }
 
             if (_firstSelected == cardUseCase)
             {
                 _firstSelected = null;
-                cardUseCase.SetClosed();
-                cardUseCase.CardListener.UpdateCardView();
+                cardUseCase.CardListener.UpdateCardView(false, CardState.Flipping, CardState.Closed);
                 return;
             }
 
@@ -50,22 +47,15 @@ namespace Game.Application.UseCases
 
         private async Task RunCardProcess(CardUseCase cardUseCase1, CardUseCase cardUseCase2)
         {
-            // Lock the cards
-            cardUseCase1.SetLocked(true);
-            cardUseCase2.SetLocked(true);
-            //
-            cardUseCase2.SetOpen();
-            cardUseCase2.CardListener.UpdateCardView();
+            cardUseCase1.Card.IsLocked = true;
+            cardUseCase2.CardListener.UpdateCardView(true, CardState.Flipping, CardState.Opened);
 
             await Task.Delay(1000);
             // compare with first
             if (cardUseCase1.GetCardID() == cardUseCase2.GetCardID())
             {
-                cardUseCase1.SetMatched();
-                cardUseCase2.SetMatched();
-                //
-                cardUseCase1.CardListener.UpdateCardView();
-                cardUseCase2.CardListener.UpdateCardView();
+                cardUseCase1.CardListener.UpdateCardView(true, CardState.Matched, CardState.Matched);
+                cardUseCase2.CardListener.UpdateCardView(true, CardState.Matched, CardState.Matched);
 
                 MatchCount++;
                 _cardMatchListener.OnCardMatched(MatchCount);
@@ -76,15 +66,8 @@ namespace Game.Application.UseCases
             }
             else
             {
-                // Unlock the cards
-                cardUseCase1.SetLocked(false);
-                cardUseCase2.SetLocked(false);
-                //
-                cardUseCase1.SetClosed();
-                cardUseCase2.SetClosed();
-                //
-                cardUseCase1.CardListener.UpdateCardView();
-                cardUseCase2.CardListener.UpdateCardView();
+                cardUseCase1.CardListener.UpdateCardView(false, CardState.Flipping, CardState.Closed);
+                cardUseCase2.CardListener.UpdateCardView(false, CardState.Flipping, CardState.Closed);
             }
 
             TurnCount++;

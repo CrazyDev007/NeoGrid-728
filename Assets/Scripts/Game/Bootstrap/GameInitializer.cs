@@ -33,7 +33,7 @@ namespace Game.Bootstrap
             //Debug.Log(_gameplayListener.GetMessage());
             var cardViews = new List<CardView>();
             var cardMatchUseCase = new CardMatchUseCase((IGameEndListener)_gameplayListener,
-                (ICardListener)_gameplayListener, (ICardMatchListener)_gameplayListener,
+                (ICardMatchListener)_gameplayListener,
                 (ITurnCompleteListener)_gameplayListener);
             // Card Creation Logic
             var ratio = spaceBetweenCards / 2;
@@ -48,9 +48,10 @@ namespace Game.Bootstrap
                         new Vector3(startX + i * spaceBetweenCards, startY + j * spaceBetweenCards, 0),
                         Quaternion.identity);
                     // Create Card Entity and UseCase
-                    var cardUseCase = new CardUseCase(new CardEntity());
+                    var card = new CardEntity();
+                    var cardUseCase = new CardUseCase(card);
                     // Create presenter with a shared use case
-                    var presenter = new CardPresenter(cardView, cardUseCase, cardMatchUseCase);
+                    var presenter = new CardPresenter(cardView, card, cardUseCase, cardMatchUseCase);
                     // Initialize view with presenter
                     cardView.Initialize(presenter);
                     //

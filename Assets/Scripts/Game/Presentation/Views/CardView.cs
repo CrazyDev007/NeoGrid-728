@@ -9,6 +9,8 @@ namespace Game.Presentation.Views
     {
         private CardPresenter _cardPresenter;
         [SerializeField] private TextMeshPro cardText;
+        [SerializeField] private Transform graphicsTransform;
+        [SerializeField] private float timeToFlipCard = 1f;
 
         public void Initialize(CardPresenter cardPresenter)
         {
@@ -26,22 +28,34 @@ namespace Game.Presentation.Views
 
         public void OpenCard()
         {
-            cardText.color = Color.green;
+            //cardText.color = Color.green;
+            //_ = HandleCardRotation(0, timeToFlipCard);
         }
 
         public void CloseCard()
         {
-            cardText.color = Color.black;
+            //_ = HandleCardRotation(180, timeToFlipCard);
+            //cardText.color = Color.black;
         }
 
         public void LockCard()
         {
-            cardText.color = Color.red;
+            cardText.color = Color.green;
         }
 
         public void UpdateCardIDText(int cardID)
         {
             cardText.text = cardID.ToString();
+        }
+
+        public Quaternion GetCardRotation()
+        {
+            return graphicsTransform.rotation;
+        }
+
+        public void SetCardRotation(Quaternion rotation)
+        {
+            graphicsTransform.rotation = rotation;
         }
 
         public CardUseCase GetCardEntity()

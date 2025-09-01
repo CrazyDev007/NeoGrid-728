@@ -1,11 +1,9 @@
 using System;
 using Game.Application.UseCases;
-using UnityEngine;
 
 namespace Game.Presentation
 {
-    public class GameplayListener : IGameplayListener, IGameEndListener, ITurnCompleteListener, ICardMatchListener,
-        ICardListener
+    public class GameplayListener : IGameplayListener, IGameEndListener, ITurnCompleteListener, ICardMatchListener
     {
         public event Action<int> OnMatchesCountChangeEvent;
         public event Action<int> OnTurnsCountChangeEvent;
@@ -24,10 +22,6 @@ namespace Game.Presentation
         public void OnCardMatched(int matchCount)
         {
             OnMatchesCountChangeEvent?.Invoke(matchCount);
-        }
-
-        public void UpdateCardView()
-        {
         }
 
         public string GetMessage()

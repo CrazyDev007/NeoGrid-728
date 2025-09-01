@@ -1,4 +1,5 @@
 using Game.Application.UseCases;
+using UnityEngine;
 
 namespace Game.Presentation.Views
 {
@@ -8,6 +9,8 @@ namespace Game.Presentation.Views
         void CloseCard();
         void LockCard();
         void UpdateCardIDText(int cardID);
+        Quaternion GetCardRotation();
+        void SetCardRotation(Quaternion rotation);
 
         CardUseCase GetCardEntity();
 
