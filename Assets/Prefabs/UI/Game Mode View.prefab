@@ -606,7 +606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3721041903986779024, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: mode
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3721041903986779024, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: rowCount
@@ -916,7 +916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3721041903986779024, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: mode
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3721041903986779024, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: rowCount
@@ -1072,6 +1072,10 @@ PrefabInstance:
       value: Medium Hard
       objectReference: {fileID: 0}
     - target: {fileID: 3721041903986779024, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
+      propertyPath: mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721041903986779024, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: rowCount
       value: 5
       objectReference: {fileID: 0}
@@ -1222,7 +1226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3721041903986779024, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: mode
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3721041903986779024, guid: ff9c7a04c211cfb4c8d27c75bd95fd5b, type: 3}
       propertyPath: rowCount

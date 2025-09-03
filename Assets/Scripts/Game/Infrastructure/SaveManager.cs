@@ -32,7 +32,9 @@ namespace Game.Infrastructure
         public GameModeConfig LoadGameMode()
         {
             var savedGameConfig = PlayerPrefs.GetString(GameModeKey, null);
-            return JsonUtility.FromJson<GameModeConfig>(savedGameConfig);
+            return string.IsNullOrEmpty(savedGameConfig)
+                ? new GameModeConfig(GameMode.Easy, 3, 2)
+                : JsonUtility.FromJson<GameModeConfig>(savedGameConfig);
         }
     }
 }
